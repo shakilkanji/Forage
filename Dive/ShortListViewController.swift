@@ -9,10 +9,8 @@
 import UIKit
 import CoreLocation
 
-private let reuseIdentifier = "cell"
-private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
-
 class ShortListViewController: UICollectionViewController, CLLocationManagerDelegate {
+    private static let reuseIdentifier = "ShortListCell"
     
 //    let locationManager = CLLocationManager()
     
@@ -34,7 +32,7 @@ class ShortListViewController: UICollectionViewController, CLLocationManagerDele
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ShortListCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ShortListViewController.reuseIdentifier, forIndexPath: indexPath) as! ShortListCell
         
         cell.backgroundColor = UIColor.lightGrayColor()
         cell.layer.borderWidth = 2.0
