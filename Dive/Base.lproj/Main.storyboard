@@ -1,32 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FO3-Xg-X5D">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="up4-0c-zGd">
-            <objects>
-                <viewController storyboardIdentifier="RestaurantCardViewController" id="eCZ-HA-YbO" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ef4-Tg-XYc"/>
-                        <viewControllerLayoutGuide type="bottom" id="yoI-21-sxC"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="LBi-PR-9gt">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="600"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yeD-pc-4Ra" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="340" y="-298"/>
-        </scene>
         <!--Restaurant Feed View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -36,32 +16,79 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xBz-zX-EFa" customClass="ZLSwipeableView" customModule="ZLSwipeableViewSwift">
-                                <rect key="frame" x="40" y="40" width="520" height="520"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="30" y="99" width="540" height="715"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="xBz-zX-EFa" secondAttribute="height" multiplier="71:94" id="HFT-NF-iRy"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Xy-H8-txA">
+                                <rect key="frame" x="30" y="814" width="540" height="86"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="I0a-e2-SGP">
+                                        <rect key="frame" x="18" y="51" width="504" height="31"/>
+                                        <color key="minimumTrackTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.45000000000000001" colorSpace="calibratedRGB"/>
+                                        <color key="maximumTrackTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.45000000000000001" colorSpace="calibratedRGB"/>
+                                    </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.67000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 mi." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7US-Ny-ZCn">
+                                        <rect key="frame" x="251.5" y="30.5" width="37.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.29019607843137252" green="0.3529411764705882" blue="0.37647058823529411" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="I0a-e2-SGP" secondAttribute="trailing" constant="20" id="ORa-c5-G4f"/>
+                                    <constraint firstItem="I0a-e2-SGP" firstAttribute="top" secondItem="7US-Ny-ZCn" secondAttribute="bottom" id="aYE-Bw-WLC"/>
+                                    <constraint firstItem="7US-Ny-ZCn" firstAttribute="centerX" secondItem="3Xy-H8-txA" secondAttribute="centerX" id="bce-rR-KWh"/>
+                                    <constraint firstItem="I0a-e2-SGP" firstAttribute="leading" secondItem="3Xy-H8-txA" secondAttribute="leading" constant="20" id="pRl-rn-0rh"/>
+                                    <constraint firstAttribute="bottom" secondItem="I0a-e2-SGP" secondAttribute="bottom" constant="5" id="uvb-NH-mj3"/>
+                                </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="xBz-zX-EFa" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="40" id="Oh1-L6-f4f"/>
-                            <constraint firstItem="xBz-zX-EFa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="a7Z-1l-yMu"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="xBz-zX-EFa" secondAttribute="trailing" constant="20" id="euO-xS-Gyw"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="xBz-zX-EFa" secondAttribute="bottom" constant="40" id="pwq-Su-EXV"/>
+                            <constraint firstItem="3Xy-H8-txA" firstAttribute="top" secondItem="xBz-zX-EFa" secondAttribute="bottom" id="7g5-IT-XWf"/>
+                            <constraint firstItem="3Xy-H8-txA" firstAttribute="trailing" secondItem="xBz-zX-EFa" secondAttribute="trailing" id="8Dq-zZ-rC7"/>
+                            <constraint firstItem="3Xy-H8-txA" firstAttribute="leading" secondItem="xBz-zX-EFa" secondAttribute="leading" id="A7Z-Kp-iTi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xBz-zX-EFa" secondAttribute="trailing" constant="10" id="TZG-OP-f2a"/>
+                            <constraint firstItem="xBz-zX-EFa" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="35" id="TvK-mq-8yQ"/>
+                            <constraint firstItem="xBz-zX-EFa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="aFU-cs-kky"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3Xy-H8-txA" secondAttribute="bottom" id="qIu-22-KTH"/>
                         </constraints>
                     </view>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="cardViewControllerIdentifier" value="RestaurantCardViewController"/>
-                    </userDefinedRuntimeAttributes>
+                    <navigationItem key="navigationItem" id="UN7-Qy-vl5"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="900"/>
                     <connections>
                         <outlet property="cardStackView" destination="xBz-zX-EFa" id="VKo-dk-syy"/>
+                        <outlet property="distanceSlider" destination="I0a-e2-SGP" id="ttM-Ev-eYE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="340" y="347"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9SW-iu-Qz1">
+            <objects>
+                <navigationController id="FO3-Xg-X5D" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vrs-Tb-DCS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="KTs-Zm-CXF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fVj-lC-FJh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-566" y="347"/>
         </scene>
     </scenes>
 </document>
