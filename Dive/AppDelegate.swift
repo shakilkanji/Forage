@@ -8,11 +8,19 @@
 
 import UIKit
 import Parse
+import CoreLocation
+
+var SharedAppDelegate: AppDelegate?
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: Properties
     var window: UIWindow?
+    lazy var locationManager: CLLocationManager = {
+        let manager = CLLocationManager()
+        manager.delegate = self
+        return manager
+    }()
 
     // MARK: Lifecycle
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -21,7 +29,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Dish.registerSubclass()
         Restaurant.registerSubclass()
         
+        SharedAppDelegate = self
         return true
+    }
+}
+
+extension AppDelegate: CLLocationManagerDelegate {
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        guard let restaurantFeedVC = (self.window?.rootViewController as? UINavigationController)?.topViewController as? RestaurantFeedViewController else { return }
+        restaurantFeedVC.updateState()
     }
 }
 
