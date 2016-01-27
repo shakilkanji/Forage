@@ -18,6 +18,9 @@
 		735D5AD11C51C13F00CAE869 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 735D5AD01C51C13F00CAE869 /* Assets.xcassets */; };
 		735D5AD41C51C13F00CAE869 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 735D5AD21C51C13F00CAE869 /* LaunchScreen.storyboard */; };
 		7ED719B8E60A40C818DE92C1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6372EE1D15E01D263EA23BA /* Pods.framework */; };
+		EF6EBB411C5965B2003FE493 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF6EBB401C5965B2003FE493 /* CoreLocation.framework */; };
+		EF6EBB431C596E66003FE493 /* ShortListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6EBB421C596E66003FE493 /* ShortListCell.swift */; };
+		EFFEAA9E1C52BEB000BADA1F /* ShortListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFEAA9D1C52BEB000BADA1F /* ShortListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		735D5AD51C51C13F00CAE869 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6372EE1D15E01D263EA23BA /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9B5C5A9DF1E8432BFC95083 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		EF6EBB401C5965B2003FE493 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		EF6EBB421C596E66003FE493 /* ShortListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortListCell.swift; sourceTree = "<group>"; };
+		EFFEAA9D1C52BEB000BADA1F /* ShortListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF6EBB411C5965B2003FE493 /* CoreLocation.framework in Frameworks */,
 				7ED719B8E60A40C818DE92C1 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,6 +60,7 @@
 		334B8094C33AEFBB318B23E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EF6EBB401C5965B2003FE493 /* CoreLocation.framework */,
 				A6372EE1D15E01D263EA23BA /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -89,10 +97,9 @@
 			isa = PBXGroup;
 			children = (
 				735D5AC91C51C13F00CAE869 /* AppDelegate.swift */,
-				735D5ACB1C51C13F00CAE869 /* RestaurantFeedViewController.swift */,
 				735D5ACD1C51C13F00CAE869 /* Main.storyboard */,
-				73495CAD1C59746E00D2284C /* RestaurantCardView.swift */,
-				73495CA71C594CE700D2284C /* RestaurantCardView.xib */,
+				7396F7341C59788300595795 /* Restaurant Feed */,
+				7396F7331C59787D00595795 /* Short List */,
 				735D5AD01C51C13F00CAE869 /* Assets.xcassets */,
 				735D5AD21C51C13F00CAE869 /* LaunchScreen.storyboard */,
 				735D5AD51C51C13F00CAE869 /* Info.plist */,
