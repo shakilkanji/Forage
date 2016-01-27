@@ -9,21 +9,50 @@
 import UIKit
 import ZLSwipeableViewSwift
 import AFNetworking
+import CoreLocation
 
 @IBDesignable
 class RestaurantFeedViewController: UIViewController {
+    // MARK: Types
+    enum State {
+        case Unknown
+        case Unauthorized
+        case Ready
+        case Empty
+    }
+    
     // MARK: Properties
     @IBOutlet var cardStackView: ZLSwipeableView!
     @IBOutlet var distanceSlider: UISlider!
+    @IBOutlet var permissionsContainerView: UIView!
+    @IBOutlet var emptyContainerView: UIView!
     
     private var cardStackIndex: Int = 0
-    private var dishes: [Dish] = []
+    private var swipedCardIndex: Int = 0
+    
+    private var dishes: [Dish] = [] {
+        didSet {
+            self.updateState()
+        }
+    }
+    
+    private var state: State = .Unknown {
+        didSet {
+            guard self.state != oldValue else { return }
+            
+            self.cardStackView.hidden = [.Unknown, .Unauthorized].contains(self.state)
+            self.permissionsContainerView.hidden = [.Unknown, .Ready, .Empty].contains(self.state)
+            self.emptyContainerView.hidden = [.Unknown, .Unauthorized, .Ready].contains(self.state)
+        }
+    }
     
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.distanceSlider.setThumbImage(UIImage(named: "SliderThumb"),
             forState: .Normal)
+
+        self.updateState()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -31,6 +60,18 @@ class RestaurantFeedViewController: UIViewController {
         Dish.all {
             self.dishes = $0
             self.reloadDataForSwipeableView(self.cardStackView)
+        }
+    }
+    
+    // MARK: Mutators
+    func updateState() {
+        print(swipedCardIndex, self.dishes.count)
+        if CLLocationManager.authorizationStatus() != .AuthorizedAlways {
+            self.state = .Unauthorized
+        } else if self.swipedCardIndex == (self.dishes.count - 1) {
+            self.state = .Empty
+        } else {
+            self.state = .Ready
         }
     }
 }
@@ -42,6 +83,7 @@ extension RestaurantFeedViewController { // SwipeableView Data Source
         self.cardStackView.nextView = self.nextViewForSwipeableView(self.cardStackView)
         self.cardStackView.previousView = self.previousViewForSwipeableView(self.cardStackView)
         
+        self.cardStackView.didEnd = self.swipeableViewCardWasSwiped(self.cardStackView)
         self.cardStackView.loadViews()
     }
     
@@ -94,6 +136,13 @@ extension RestaurantFeedViewController { // SwipeableView Data Source
         }
         
         return card
+    }
+}
+
+extension RestaurantFeedViewController { // SwipeableView Delegate
+    func swipeableViewCardWasSwiped(swipeableView: ZLSwipeableView)(view: UIView, atLocation: CGPoint) {
+        self.swipedCardIndex += 1
+        self.updateState()
     }
 }
 
