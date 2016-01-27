@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="RestaurantCardView" customModule="Dive" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="355" height="470"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OFv-72-kCe">
+                    <rect key="frame" x="0.0" y="0.0" width="355" height="355"/>
+                    <color key="backgroundColor" red="0.74117647060000003" green="0.062745098040000002" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="OFv-72-kCe" secondAttribute="height" multiplier="1:1" id="n5j-bg-7tm"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PLH-bT-CXs">
+                    <rect key="frame" x="0.0" y="355" width="355" height="115"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cF-8E-ajP">
+                            <rect key="frame" x="155" y="47" width="44" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="0cF-8E-ajP" firstAttribute="centerY" secondItem="PLH-bT-CXs" secondAttribute="centerY" id="PF5-19-jUH"/>
+                        <constraint firstItem="0cF-8E-ajP" firstAttribute="centerX" secondItem="PLH-bT-CXs" secondAttribute="centerX" id="fCL-tj-xgr"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="PLH-bT-CXs" firstAttribute="top" secondItem="OFv-72-kCe" secondAttribute="bottom" id="2cQ-sg-Zwx"/>
+                <constraint firstAttribute="trailing" secondItem="OFv-72-kCe" secondAttribute="trailing" id="BaM-kU-vqw"/>
+                <constraint firstAttribute="bottom" secondItem="PLH-bT-CXs" secondAttribute="bottom" id="D8Q-jJ-fRE"/>
+                <constraint firstItem="PLH-bT-CXs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="a9F-VK-ZHw"/>
+                <constraint firstAttribute="trailing" secondItem="PLH-bT-CXs" secondAttribute="trailing" id="nW6-hO-jZ5"/>
+                <constraint firstItem="OFv-72-kCe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="syg-fV-xzm"/>
+                <constraint firstItem="OFv-72-kCe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ycD-yb-l51"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="4"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="imageView" destination="OFv-72-kCe" id="zUM-x0-UI1"/>
+                <outlet property="label" destination="0cF-8E-ajP" id="LZl-Sg-yYL"/>
+            </connections>
+            <point key="canvasLocation" x="368.5" y="348"/>
+        </view>
+    </objects>
+</document>

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		73495CA81C594CE700D2284C /* RestaurantCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73495CA71C594CE700D2284C /* RestaurantCardView.xib */; };
+		73495CAA1C5970E100D2284C /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73495CA91C5970E100D2284C /* Restaurant.swift */; };
+		73495CAC1C59719800D2284C /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73495CAB1C59719800D2284C /* Dish.swift */; };
+		73495CAE1C59746E00D2284C /* RestaurantCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73495CAD1C59746E00D2284C /* RestaurantCardView.swift */; };
 		735D5ACA1C51C13F00CAE869 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D5AC91C51C13F00CAE869 /* AppDelegate.swift */; };
 		735D5ACC1C51C13F00CAE869 /* RestaurantFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D5ACB1C51C13F00CAE869 /* RestaurantFeedViewController.swift */; };
 		735D5ACF1C51C13F00CAE869 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 735D5ACD1C51C13F00CAE869 /* Main.storyboard */; };
@@ -20,6 +24,10 @@
 
 /* Begin PBXFileReference section */
 		6B22DC1F0EA2C4DD262A3525 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		73495CA71C594CE700D2284C /* RestaurantCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantCardView.xib; sourceTree = "<group>"; };
+		73495CA91C5970E100D2284C /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		73495CAB1C59719800D2284C /* Dish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
+		73495CAD1C59746E00D2284C /* RestaurantCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantCardView.swift; sourceTree = "<group>"; };
 		735D5AC61C51C13F00CAE869 /* Dive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		735D5AC91C51C13F00CAE869 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		735D5ACB1C51C13F00CAE869 /* RestaurantFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantFeedViewController.swift; sourceTree = "<group>"; };
@@ -91,9 +99,13 @@
 				735D5ACD1C51C13F00CAE869 /* Main.storyboard */,
 				EFFEAA9D1C52BEB000BADA1F /* ShortListViewController.swift */,
 				EF6EBB421C596E66003FE493 /* ShortListCell.swift */,
+				73495CAD1C59746E00D2284C /* RestaurantCardView.swift */,
+				73495CA71C594CE700D2284C /* RestaurantCardView.xib */,
 				735D5AD01C51C13F00CAE869 /* Assets.xcassets */,
 				735D5AD21C51C13F00CAE869 /* LaunchScreen.storyboard */,
 				735D5AD51C51C13F00CAE869 /* Info.plist */,
+				73495CA91C5970E100D2284C /* Restaurant.swift */,
+				73495CAB1C59719800D2284C /* Dish.swift */,
 			);
 			path = Dive;
 			sourceTree = "<group>";
@@ -160,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				735D5AD41C51C13F00CAE869 /* LaunchScreen.storyboard in Resources */,
+				73495CA81C594CE700D2284C /* RestaurantCardView.xib in Resources */,
 				735D5AD11C51C13F00CAE869 /* Assets.xcassets in Resources */,
 				735D5ACF1C51C13F00CAE869 /* Main.storyboard in Resources */,
 			);
@@ -220,10 +233,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73495CAE1C59746E00D2284C /* RestaurantCardView.swift in Sources */,
 				735D5ACC1C51C13F00CAE869 /* RestaurantFeedViewController.swift in Sources */,
+				73495CAC1C59719800D2284C /* Dish.swift in Sources */,
 				735D5ACA1C51C13F00CAE869 /* AppDelegate.swift in Sources */,
 				EF6EBB431C596E66003FE493 /* ShortListCell.swift in Sources */,
 				EFFEAA9E1C52BEB000BADA1F /* ShortListViewController.swift in Sources */,
+				73495CAA1C5970E100D2284C /* Restaurant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
