@@ -7,14 +7,22 @@
 //
 
 import UIKit
+import CoreLocation
 
-private let reuseIdentifier = "FoodPornCell"
+private let reuseIdentifier = "cell"
 private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
 
-class ShortListViewController: UICollectionViewController {
+class ShortListViewController: UICollectionViewController, CLLocationManagerDelegate {
+    
+//    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         self.collectionView?.backgroundColor = UIColor.blueColor()
+        
+//        locationManager.delegate = self
+//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//        locationManager.requestAlwaysAuthorization()
+//        locationManager.startUpdatingLocation()
     }
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -26,7 +34,7 @@ class ShortListViewController: UICollectionViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ShortListCell
         
         cell.backgroundColor = UIColor.lightGrayColor()
         cell.layer.borderWidth = 2.0
