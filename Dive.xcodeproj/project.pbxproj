@@ -95,12 +95,9 @@
 			isa = PBXGroup;
 			children = (
 				735D5AC91C51C13F00CAE869 /* AppDelegate.swift */,
-				735D5ACB1C51C13F00CAE869 /* RestaurantFeedViewController.swift */,
 				735D5ACD1C51C13F00CAE869 /* Main.storyboard */,
-				EFFEAA9D1C52BEB000BADA1F /* ShortListViewController.swift */,
-				EF6EBB421C596E66003FE493 /* ShortListCell.swift */,
-				73495CAD1C59746E00D2284C /* RestaurantCardView.swift */,
-				73495CA71C594CE700D2284C /* RestaurantCardView.xib */,
+				7396F7341C59788300595795 /* Restaurant Feed */,
+				7396F7331C59787D00595795 /* Short List */,
 				735D5AD01C51C13F00CAE869 /* Assets.xcassets */,
 				735D5AD21C51C13F00CAE869 /* LaunchScreen.storyboard */,
 				735D5AD51C51C13F00CAE869 /* Info.plist */,
@@ -108,6 +105,25 @@
 				73495CAB1C59719800D2284C /* Dish.swift */,
 			);
 			path = Dive;
+			sourceTree = "<group>";
+		};
+		7396F7331C59787D00595795 /* Short List */ = {
+			isa = PBXGroup;
+			children = (
+				EFFEAA9D1C52BEB000BADA1F /* ShortListViewController.swift */,
+				EF6EBB421C596E66003FE493 /* ShortListCell.swift */,
+			);
+			name = "Short List";
+			sourceTree = "<group>";
+		};
+		7396F7341C59788300595795 /* Restaurant Feed */ = {
+			isa = PBXGroup;
+			children = (
+				735D5ACB1C51C13F00CAE869 /* RestaurantFeedViewController.swift */,
+				73495CAD1C59746E00D2284C /* RestaurantCardView.swift */,
+				73495CA71C594CE700D2284C /* RestaurantCardView.xib */,
+			);
+			name = "Restaurant Feed";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
