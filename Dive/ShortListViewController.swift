@@ -20,8 +20,8 @@ class ShortListViewController: UICollectionViewController {
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        Dish.shortList {
-            self.dishes = $0
+        Dish.shortList { (dishes: [Dish]) in
+            self.dishes = dishes
             self.collectionView?.reloadData()
         }
     }
