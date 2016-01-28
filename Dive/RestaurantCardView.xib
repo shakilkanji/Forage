@@ -14,7 +14,7 @@
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OFv-72-kCe">
                     <rect key="frame" x="0.0" y="0.0" width="355" height="355"/>
-                    <color key="backgroundColor" red="0.74117647060000003" green="0.062745098040000002" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="OFv-72-kCe" secondAttribute="height" multiplier="1:1" id="n5j-bg-7tm"/>
                     </constraints>

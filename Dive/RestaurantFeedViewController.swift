@@ -17,12 +17,14 @@ class RestaurantFeedViewController: UIViewController {
     enum State {
         case Unknown
         case Unauthorized
+        case Pending
         case Ready
         case Empty
     }
     
     // MARK: Properties
     @IBOutlet var cardStackView: ZLSwipeableView!
+    @IBOutlet var distanceLabel: UILabel!
     @IBOutlet var distanceSlider: UISlider!
     @IBOutlet var permissionsContainerView: UIView!
     @IBOutlet var emptyContainerView: UIView!
@@ -30,19 +32,33 @@ class RestaurantFeedViewController: UIViewController {
     private var cardStackIndex: Int = 0
     private var swipedCardIndex: Int = 0
     
-    private var dishes: [Dish] = [] {
+    private var dishes: [Dish]? {
         didSet {
             self.updateState()
         }
     }
     
+    private let conversionFactor: Float = 4.0
+    private var miles: Float {
+        return self.distanceSlider.value * self.conversionFactor
+    }
+    
+    private var distance: CLLocationDistance {
+        return CLLocationDistance(self.miles * 1609.34)
+    }
+    
     private var state: State = .Unknown {
         didSet {
+            defer {
+                if self.state == .Pending {
+                    self.reloadData()
+                }
+            }
+            
             guard self.state != oldValue else { return }
             
             self.cardStackView.hidden = [.Unknown, .Unauthorized].contains(self.state)
-            self.permissionsContainerView.hidden = [.Unknown, .Ready, .Empty].contains(self.state)
-            self.emptyContainerView.hidden = [.Unknown, .Unauthorized, .Ready].contains(self.state)
+            self.permissionsContainerView.hidden = [.Unknown, .Pending, .Ready, .Empty].contains(self.state)
         }
     }
     
@@ -53,26 +69,50 @@ class RestaurantFeedViewController: UIViewController {
             forState: .Normal)
 
         self.updateState()
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "initialLocationWasFound:",
+            name: AppDelegate.DidFindInitialLocationsNotification,
+            object: nil)
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        Dish.all {
-            self.dishes = $0
-            self.reloadDataForSwipeableView(self.cardStackView)
-        }
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     // MARK: Mutators
     func updateState() {
-        print(swipedCardIndex, self.dishes.count)
         if CLLocationManager.authorizationStatus() != .AuthorizedAlways {
             self.state = .Unauthorized
-        } else if self.swipedCardIndex == (self.dishes.count - 1) {
-            self.state = .Empty
-        } else {
+        } else if SharedAppDelegate?.locationManager.location == nil || self.dishes == nil {
+            self.state = .Pending
+        } else if self.swipedCardIndex != (self.dishes!.count - 1) {
             self.state = .Ready
+        } else {
+            self.state = .Empty
         }
+    }
+    
+    func reloadData(force: Bool = false) {
+        guard let location = SharedAppDelegate?.locationManager.location else { return }
+        
+        Dish.near(location, radius: self.distance) {
+            self.dishes = $0
+            self.reloadDataForSwipeableView(self.cardStackView)
+            self.updateState()
+        }
+    }
+    
+    // MARK: Responders
+    func initialLocationWasFound(notification: NSNotification?) {
+        self.updateState()
+    }
+    
+    @IBAction func distanceSlideWasSlid(sender: UISlider?) {
+        self.dishes = nil
+    }
+    
+    @IBAction func distanceSliderValueChanged(sender: UISlider?) {
+        self.distanceLabel.text = "\(Int(round(self.miles))) mi."
     }
 }
 
@@ -83,7 +123,10 @@ extension RestaurantFeedViewController { // SwipeableView Data Source
         self.cardStackView.nextView = self.nextViewForSwipeableView(self.cardStackView)
         self.cardStackView.previousView = self.previousViewForSwipeableView(self.cardStackView)
         
-        self.cardStackView.didEnd = self.swipeableViewCardWasSwiped(self.cardStackView)
+        self.cardStackView.didSwipe = self.swipeableViewCardWasSwiped(self.cardStackView)
+        
+        self.cardStackIndex = 0
+        self.cardStackView.discardViews()
         self.cardStackView.loadViews()
     }
     
@@ -92,16 +135,16 @@ extension RestaurantFeedViewController { // SwipeableView Data Source
     }
     
     func nextViewForSwipeableView(swipeableView: ZLSwipeableView)() -> UIView? {
-        guard self.cardStackIndex + 1 < self.dishes.count else { return nil }
-        let dish = self.dishes[self.cardStackIndex + 1]
+        guard self.cardStackIndex + 1 < (self.dishes?.count ?? 0) else { return nil }
+        let dish = self.dishes![self.cardStackIndex + 1]
         self.cardStackIndex += 1
         
         return self.cardForDish(dish, inSwipeableView: swipeableView)
     }
     
     func previousViewForSwipeableView(swipeableView: ZLSwipeableView)() -> UIView? {
-        guard self.cardStackIndex - 1 >= 0 else { return nil }
-        let dish = self.dishes[self.cardStackIndex - 1]
+        guard self.cardStackIndex - 1 >= 0 && self.dishes != nil else { return nil }
+        let dish = self.dishes![self.cardStackIndex - 1]
         self.cardStackIndex -= 1
         
         return self.cardForDish(dish, inSwipeableView: swipeableView)
@@ -140,7 +183,12 @@ extension RestaurantFeedViewController { // SwipeableView Data Source
 }
 
 extension RestaurantFeedViewController { // SwipeableView Delegate
-    func swipeableViewCardWasSwiped(swipeableView: ZLSwipeableView)(view: UIView, atLocation: CGPoint) {
+    func swipeableViewCardWasSwiped(swipeableView: ZLSwipeableView)(view: UIView, inDirection direction: Direction, directionVector: CGVector) {
+        let dish = self.dishes![self.swipedCardIndex]
+        if direction == .Right {
+            dish.saveToShortList()
+        }
+        
         self.swipedCardIndex += 1
         self.updateState()
     }

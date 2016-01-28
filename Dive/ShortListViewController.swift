@@ -10,35 +10,58 @@ import UIKit
 import CoreLocation
 import DZNEmptyDataSet
 
-class ShortListViewController: UICollectionViewController, CLLocationManagerDelegate, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
+class ShortListViewController: UICollectionViewController {
+    // MARK: Constants
     private static let reuseIdentifier = "ShortListCell"
-        
+    
+    // MARK: Properties
+    var dishes: [Dish] = []
+    
+    // MARK: Lifecycle
     override func viewDidLoad() {
-        let backgroundColor = UIColor(red: 248, green: 248, blue: 248, alpha: 100)
-        self.collectionView?.backgroundColor = backgroundColor
+        super.viewDidLoad()
+        Dish.shortList {
+            self.dishes = $0
+            self.collectionView?.reloadData()
+        }
     }
+    
+    // MARK: Responders
+    @IBAction func backButtonWasPressed(sender: UIButton?) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+}
 
+extension ShortListViewController { // Collection View Data Source
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 0
+        return 1
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return self.dishes.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ShortListViewController.reuseIdentifier, forIndexPath: indexPath) as! ShortListCell
+        let dish = self.dishes[indexPath.item]
         
-        cell.backgroundColor = UIColor.lightGrayColor()
-        cell.layer.borderWidth = 2.0
-        cell.layer.borderColor = UIColor.whiteColor().CGColor
-        cell.layer.cornerRadius = 5.0
+        cell.imageView.setImageWithURL(NSURL(string: dish.photo)!, placeholderImage: nil)
         
         return cell
+    }    
+}
+
+extension ShortListViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let size = (collectionView.bounds.width / 2.0) -
+            ((collectionView.contentInset.left + collectionView.contentInset.right) +
+            ((collectionView.collectionViewLayout as! UICollectionViewFlowLayout).minimumInteritemSpacing * 2.0))
+        
+        return CGSizeMake(size, size)
     }
 }
 
-extension ShortListViewController { // DZNEmptyDataSetSource
+extension ShortListViewController: DZNEmptyDataSetSource {
     func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
         return UIImage(named: "ShortListEmpty")
     }

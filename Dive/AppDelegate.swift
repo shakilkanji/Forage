@@ -14,8 +14,14 @@ var SharedAppDelegate: AppDelegate?
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    // MARK: Constants
+    static let DidUpdateLocationsNotification = "DidUpdateLocations"
+    static let DidFindInitialLocationsNotification = "DidFindInitialLocations"
+    
     // MARK: Properties
     var window: UIWindow?
+    
+    private var firstLocationFound = false
     lazy var locationManager: CLLocationManager = {
         let manager = CLLocationManager()
         manager.delegate = self
@@ -40,6 +46,17 @@ extension AppDelegate: CLLocationManagerDelegate {
         guard let restaurantFeedVC = (self.window?.rootViewController as? UINavigationController)?.topViewController as? RestaurantFeedViewController else { return }
         restaurantFeedVC.updateState()
         self.locationManager.startUpdatingLocation()
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        NSNotificationCenter.defaultCenter().postNotificationName(AppDelegate.DidUpdateLocationsNotification,
+            object: locations)
+        
+        if !self.firstLocationFound {
+            self.firstLocationFound = true
+            NSNotificationCenter.defaultCenter().postNotificationName(AppDelegate.DidFindInitialLocationsNotification,
+                object: locations)
+        }
     }
 }
 

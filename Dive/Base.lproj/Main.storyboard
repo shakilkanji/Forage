@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DUb-xI-81P">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FO3-Xg-X5D">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -7,7 +7,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Restaurant Feed View Controller-->
+        <!--Getting hungry?-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="RestaurantFeedViewController" customModule="Dive" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="836"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Yg-EM-3dp" userLabel="Empty Container">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Yg-EM-3dp" userLabel="Empty Container">
                                 <rect key="frame" x="30" y="35" width="540" height="715"/>
                                 <connections>
                                     <segue destination="gTv-WL-xes" kind="embed" id="UGY-7F-c9b"/>
@@ -39,6 +39,10 @@
                                         <rect key="frame" x="18" y="51" width="504" height="31"/>
                                         <color key="minimumTrackTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.45000000000000001" colorSpace="calibratedRGB"/>
                                         <color key="maximumTrackTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.45000000000000001" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="distanceSlideWasSlid:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y4e-iI-kkd"/>
+                                            <action selector="distanceSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="XXU-Fj-9XE"/>
+                                        </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.67000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 mi." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7US-Ny-ZCn">
                                         <rect key="frame" x="251" y="30" width="38" height="21"/>
@@ -82,15 +86,26 @@
                             <constraint firstItem="6Yg-EM-3dp" firstAttribute="trailing" secondItem="xBz-zX-EFa" secondAttribute="trailing" id="viz-Mf-WSi"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="UN7-Qy-vl5"/>
+                    <navigationItem key="navigationItem" title="Getting hungry?" id="UN7-Qy-vl5">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="gH9-pb-wvt">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="a8K-JV-wJR">
+                                <rect key="frame" x="545" y="5" width="35" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="ShortList"/>
+                                <connections>
+                                    <segue destination="DUb-xI-81P" kind="show" id="pNL-mJ-spE"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="900"/>
                     <connections>
                         <outlet property="cardStackView" destination="xBz-zX-EFa" id="VKo-dk-syy"/>
+                        <outlet property="distanceLabel" destination="7US-Ny-ZCn" id="Gql-PP-tLm"/>
                         <outlet property="distanceSlider" destination="I0a-e2-SGP" id="ttM-Ev-eYE"/>
                         <outlet property="emptyContainerView" destination="6Yg-EM-3dp" id="KXz-E6-yth"/>
                         <outlet property="permissionsContainerView" destination="8os-sS-65I" id="Com-JU-9vp"/>
-                        <segue destination="DUb-xI-81P" kind="show" id="F9l-4b-7k0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -104,27 +119,40 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="UBy-lL-bVR">
                         <rect key="frame" x="0.0" y="64" width="600" height="836"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VEb-Xi-3xJ">
-                            <size key="itemSize" width="172" height="172"/>
+                            <size key="itemSize" width="150" height="150"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShortListCell" id="Hw1-ng-Uot" customClass="ShortListCell" customModule="Dive" customModuleProvider="target">
-                                <rect key="frame" x="10" y="10" width="172" height="172"/>
+                                <rect key="frame" x="10" y="10" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="172" height="172"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rGk-0n-CH7">
-                                            <rect key="frame" x="22" y="32" width="128" height="108"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rGk-0n-CH7">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="rGk-0n-CH7" secondAttribute="trailing" id="NXE-UK-7rR"/>
+                                    <constraint firstAttribute="bottom" secondItem="rGk-0n-CH7" secondAttribute="bottom" id="gdw-dk-prV"/>
+                                    <constraint firstItem="rGk-0n-CH7" firstAttribute="top" secondItem="Hw1-ng-Uot" secondAttribute="top" id="jMU-tg-lBq"/>
+                                    <constraint firstItem="rGk-0n-CH7" firstAttribute="leading" secondItem="Hw1-ng-Uot" secondAttribute="leading" id="qiV-lT-e7J"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="imageView" destination="rGk-0n-CH7" id="AIc-u5-SmB"/>
                                 </connections>
@@ -137,7 +165,18 @@
                             <outlet property="emptyDataSetSource" destination="DUb-xI-81P" id="bIJ-e7-c90"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Short List" id="EyH-9S-TeC"/>
+                    <navigationItem key="navigationItem" title="Short List" id="EyH-9S-TeC">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="KFb-1b-B7E">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Pz8-Pf-naR">
+                                <rect key="frame" x="20" y="2" width="40" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Cards"/>
+                                <connections>
+                                    <action selector="backButtonWasPressed:" destination="DUb-xI-81P" eventType="touchUpInside" id="rsI-Pl-Z7L"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jiv-yl-QX7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -150,6 +189,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Vrs-Tb-DCS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                            <color key="textColor" red="0.29019607843137257" green="0.35294117647058826" blue="0.37647058823529411" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="KTs-Zm-CXF"/>
@@ -157,7 +200,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fVj-lC-FJh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-566" y="347"/>
+            <point key="canvasLocation" x="-482" y="347"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="T0N-e5-hAt">
@@ -286,4 +329,8 @@
             <point key="canvasLocation" x="-23" y="1512.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Cards" width="40" height="39"/>
+        <image name="ShortList" width="35" height="34"/>
+    </resources>
 </document>

@@ -75,6 +75,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		731C1DD91C59CCA600ECC18D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				73495CA91C5970E100D2284C /* Restaurant.swift */,
+				73495CAB1C59719800D2284C /* Dish.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		735D5ABD1C51C13F00CAE869 = {
 			isa = PBXGroup;
 			children = (
@@ -103,8 +112,7 @@
 				735D5AD01C51C13F00CAE869 /* Assets.xcassets */,
 				735D5AD21C51C13F00CAE869 /* LaunchScreen.storyboard */,
 				735D5AD51C51C13F00CAE869 /* Info.plist */,
-				73495CA91C5970E100D2284C /* Restaurant.swift */,
-				73495CAB1C59719800D2284C /* Dish.swift */,
+				731C1DD91C59CCA600ECC18D /* Models */,
 			);
 			path = Dive;
 			sourceTree = "<group>";
