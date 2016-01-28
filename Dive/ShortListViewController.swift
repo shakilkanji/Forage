@@ -12,19 +12,10 @@ import DZNEmptyDataSet
 
 class ShortListViewController: UICollectionViewController, CLLocationManagerDelegate, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
     private static let reuseIdentifier = "ShortListCell"
-    
-//    let locationManager = CLLocationManager()
-    
+        
     override func viewDidLoad() {
         let backgroundColor = UIColor(red: 248, green: 248, blue: 248, alpha: 100)
         self.collectionView?.backgroundColor = backgroundColor
-        
-        self.collectionView?.emptyDataSetDelegate = self
-        self.collectionView?.emptyDataSetSource = self
-//        locationManager.delegate = self
-//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//        locationManager.requestAlwaysAuthorization()
-//        locationManager.startUpdatingLocation()
     }
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -49,19 +40,19 @@ class ShortListViewController: UICollectionViewController, CLLocationManagerDele
 
 extension ShortListViewController { // DZNEmptyDataSetSource
     func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
-        return UIImage(named: "Short List Empty Image")
+        return UIImage(named: "ShortListEmpty")
     }
     
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
         let text = "No saved photos"
-        let attributes:NSDictionary = [NSFontAttributeName: UIFont.systemFontOfSize(20.0), NSForegroundColorAttributeName: UIColor.darkGrayColor()]
+        let attributes: NSDictionary = [NSFontAttributeName: UIFont.systemFontOfSize(20.0), NSForegroundColorAttributeName: UIColor.darkGrayColor()]
         
         return NSAttributedString(string: text, attributes: attributes as? [String : AnyObject])
     }
     
     func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
         let text = "Swipe right on some food pics to add them to your short list."
-        let attributes:NSDictionary = [NSFontAttributeName: UIFont.systemFontOfSize(16.0), NSForegroundColorAttributeName: UIColor.darkGrayColor()]
+        let attributes: NSDictionary = [NSFontAttributeName: UIFont.systemFontOfSize(16.0), NSForegroundColorAttributeName: UIColor.darkGrayColor()]
         
         return NSAttributedString(string: text, attributes: attributes as? [String : AnyObject])
     }

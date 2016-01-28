@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var locationManager: CLLocationManager = {
         let manager = CLLocationManager()
         manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest        
         return manager
     }()
 
@@ -38,6 +39,7 @@ extension AppDelegate: CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         guard let restaurantFeedVC = (self.window?.rootViewController as? UINavigationController)?.topViewController as? RestaurantFeedViewController else { return }
         restaurantFeedVC.updateState()
+        self.locationManager.startUpdatingLocation()
     }
 }
 
