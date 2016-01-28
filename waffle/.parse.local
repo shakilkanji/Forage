@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "Waffle": {
+      "applicationId": "S31oUfqQYNeyD1XMR3tWnEAZEHWHRd4AuEgmYduT"
+    },
+    "_default": {
+      "link": "Waffle"
+    }
+  }
+}
