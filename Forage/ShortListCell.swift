@@ -1,6 +1,6 @@
 //
 //  ShortListCell.swift
-//  Dive
+//  Forage
 //
 //  Created by Shakil Kanji on 1/27/16.
 //  Copyright © 2016 atomic. All rights reserved.

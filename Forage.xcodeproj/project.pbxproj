@@ -30,7 +30,7 @@
 		73495CA91C5970E100D2284C /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		73495CAB1C59719800D2284C /* Dish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		73495CAD1C59746E00D2284C /* RestaurantCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantCardView.swift; sourceTree = "<group>"; };
-		735D5AC61C51C13F00CAE869 /* Dive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dive.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		735D5AC61C51C13F00CAE869 /* Forage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Forage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		735D5AC91C51C13F00CAE869 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		735D5ACB1C51C13F00CAE869 /* RestaurantFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantFeedViewController.swift; sourceTree = "<group>"; };
 		735D5ACE1C51C13F00CAE869 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 		735D5ABD1C51C13F00CAE869 = {
 			isa = PBXGroup;
 			children = (
-				735D5AC81C51C13F00CAE869 /* Dive */,
+				735D5AC81C51C13F00CAE869 /* Forage */,
 				735D5AC71C51C13F00CAE869 /* Products */,
 				43F12D4D5DBC2AE37F646927 /* Pods */,
 				334B8094C33AEFBB318B23E7 /* Frameworks */,
@@ -97,12 +97,12 @@
 		735D5AC71C51C13F00CAE869 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				735D5AC61C51C13F00CAE869 /* Dive.app */,
+				735D5AC61C51C13F00CAE869 /* Forage.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		735D5AC81C51C13F00CAE869 /* Dive */ = {
+		735D5AC81C51C13F00CAE869 /* Forage */ = {
 			isa = PBXGroup;
 			children = (
 				735D5AC91C51C13F00CAE869 /* AppDelegate.swift */,
@@ -114,7 +114,8 @@
 				735D5AD51C51C13F00CAE869 /* Info.plist */,
 				731C1DD91C59CCA600ECC18D /* Models */,
 			);
-			path = Dive;
+			name = Forage;
+			path = Forage;
 			sourceTree = "<group>";
 		};
 		7396F7331C59787D00595795 /* Short List */ = {
@@ -140,9 +141,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		735D5AC51C51C13F00CAE869 /* Dive */ = {
+		735D5AC51C51C13F00CAE869 /* Forage */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 735D5AD81C51C13F00CAE869 /* Build configuration list for PBXNativeTarget "Dive" */;
+			buildConfigurationList = 735D5AD81C51C13F00CAE869 /* Build configuration list for PBXNativeTarget "Forage" */;
 			buildPhases = (
 				FB177325731FE32BA9A85E5F /* Check Pods Manifest.lock */,
 				735D5AC21C51C13F00CAE869 /* Sources */,
@@ -155,9 +156,9 @@
 			);
 			dependencies = (
 			);
-			name = Dive;
-			productName = Dive;
-			productReference = 735D5AC61C51C13F00CAE869 /* Dive.app */;
+			name = Forage;
+			productName = Forage;
+			productReference = 735D5AC61C51C13F00CAE869 /* Forage.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -175,7 +176,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 735D5AC11C51C13F00CAE869 /* Build configuration list for PBXProject "Dive" */;
+			buildConfigurationList = 735D5AC11C51C13F00CAE869 /* Build configuration list for PBXProject "Forage" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -188,7 +189,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				735D5AC51C51C13F00CAE869 /* Dive */,
+				735D5AC51C51C13F00CAE869 /* Forage */,
 			);
 		};
 /* End PBXProject section */
@@ -381,10 +382,10 @@
 			baseConfigurationReference = C9B5C5A9DF1E8432BFC95083 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Dive/Info.plist;
+				INFOPLIST_FILE = Forage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = vc.atomic.labs.Dive;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = vc.atomic.labs.Forage;
+				PRODUCT_NAME = Forage;
 			};
 			name = Debug;
 		};
@@ -393,17 +394,17 @@
 			baseConfigurationReference = 6B22DC1F0EA2C4DD262A3525 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Dive/Info.plist;
+				INFOPLIST_FILE = Forage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = vc.atomic.labs.Dive;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = vc.atomic.labs.Forage;
+				PRODUCT_NAME = Forage;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		735D5AC11C51C13F00CAE869 /* Build configuration list for PBXProject "Dive" */ = {
+		735D5AC11C51C13F00CAE869 /* Build configuration list for PBXProject "Forage" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				735D5AD61C51C13F00CAE869 /* Debug */,
@@ -412,7 +413,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		735D5AD81C51C13F00CAE869 /* Build configuration list for PBXNativeTarget "Dive" */ = {
+		735D5AD81C51C13F00CAE869 /* Build configuration list for PBXNativeTarget "Forage" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				735D5AD91C51C13F00CAE869 /* Debug */,

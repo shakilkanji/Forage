@@ -1,6 +1,6 @@
 //
 //  RestaurantFeedViewController.swift
-//  Dive
+//  Forage
 //
 //  Created by PATRICK PERINI on 1/21/16.
 //  Copyright © 2016 atomic. All rights reserved.
@@ -56,6 +56,7 @@ class RestaurantFeedViewController: UIViewController {
             }
             
             guard self.state != oldValue else { return }
+            guard let _ = self.viewIfLoaded else { return }
             
             self.cardStackView.hidden = [.Unknown, .Unauthorized].contains(self.state)
             self.permissionsContainerView.hidden = [.Unknown, .Pending, .Ready, .Empty].contains(self.state)

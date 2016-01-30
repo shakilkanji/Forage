@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  Dive
+//  Forage
 //
 //  Created by PATRICK PERINI on 1/21/16.
 //  Copyright © 2016 atomic. All rights reserved.
@@ -45,7 +45,14 @@ extension AppDelegate: CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         guard let restaurantFeedVC = (self.window?.rootViewController as? UINavigationController)?.topViewController as? RestaurantFeedViewController else { return }
         restaurantFeedVC.updateState()
-        self.locationManager.startUpdatingLocation()
+        
+        switch status {
+        case .AuthorizedAlways, .AuthorizedWhenInUse:
+            self.locationManager.startUpdatingLocation()
+            
+        default:
+            break
+        }
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Dive.xcodeproj">
+      location = "group:/Users/pcperini/Documents/Labs/Dive/Forage.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
