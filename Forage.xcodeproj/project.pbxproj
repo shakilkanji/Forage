@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7318F46B1C5EBDBF0071688D /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7318F46A1C5EBDBF0071688D /* NavigationViewController.swift */; };
 		731C1DD31C5988EF00ECC18D /* PermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731C1DD21C5988EF00ECC18D /* PermissionsViewController.swift */; };
 		73495CA81C594CE700D2284C /* RestaurantCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73495CA71C594CE700D2284C /* RestaurantCardView.xib */; };
 		73495CAA1C5970E100D2284C /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73495CA91C5970E100D2284C /* Restaurant.swift */; };
@@ -17,6 +18,9 @@
 		735D5ACF1C51C13F00CAE869 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 735D5ACD1C51C13F00CAE869 /* Main.storyboard */; };
 		735D5AD11C51C13F00CAE869 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 735D5AD01C51C13F00CAE869 /* Assets.xcassets */; };
 		735D5AD41C51C13F00CAE869 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 735D5AD21C51C13F00CAE869 /* LaunchScreen.storyboard */; };
+		73A039881C5D6C0D00373A25 /* OverlaySegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A039871C5D6C0D00373A25 /* OverlaySegue.swift */; };
+		73A0398B1C5D6E3B00373A25 /* RestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A0398A1C5D6E3B00373A25 /* RestaurantViewController.swift */; };
+		73A0398D1C5D726C00373A25 /* RestaurantDishesPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A0398C1C5D726C00373A25 /* RestaurantDishesPageViewController.swift */; };
 		7ED719B8E60A40C818DE92C1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6372EE1D15E01D263EA23BA /* Pods.framework */; };
 		EF6EBB411C5965B2003FE493 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF6EBB401C5965B2003FE493 /* CoreLocation.framework */; };
 		EF6EBB431C596E66003FE493 /* ShortListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6EBB421C596E66003FE493 /* ShortListCell.swift */; };
@@ -25,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		6B22DC1F0EA2C4DD262A3525 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		7318F46A1C5EBDBF0071688D /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		731C1DD21C5988EF00ECC18D /* PermissionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionsViewController.swift; sourceTree = "<group>"; };
 		73495CA71C594CE700D2284C /* RestaurantCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantCardView.xib; sourceTree = "<group>"; };
 		73495CA91C5970E100D2284C /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
@@ -37,6 +42,9 @@
 		735D5AD01C51C13F00CAE869 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		735D5AD31C51C13F00CAE869 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		735D5AD51C51C13F00CAE869 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		73A039871C5D6C0D00373A25 /* OverlaySegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlaySegue.swift; sourceTree = "<group>"; };
+		73A0398A1C5D6E3B00373A25 /* RestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantViewController.swift; sourceTree = "<group>"; };
+		73A0398C1C5D726C00373A25 /* RestaurantDishesPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDishesPageViewController.swift; sourceTree = "<group>"; };
 		A6372EE1D15E01D263EA23BA /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9B5C5A9DF1E8432BFC95083 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EF6EBB401C5965B2003FE493 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -106,15 +114,16 @@
 			isa = PBXGroup;
 			children = (
 				735D5AC91C51C13F00CAE869 /* AppDelegate.swift */,
+				7318F46A1C5EBDBF0071688D /* NavigationViewController.swift */,
 				735D5ACD1C51C13F00CAE869 /* Main.storyboard */,
 				7396F7341C59788300595795 /* Restaurant Feed */,
 				7396F7331C59787D00595795 /* Short List */,
+				73A039891C5D6C1200373A25 /* Restaurant Detail */,
 				735D5AD01C51C13F00CAE869 /* Assets.xcassets */,
 				735D5AD21C51C13F00CAE869 /* LaunchScreen.storyboard */,
 				735D5AD51C51C13F00CAE869 /* Info.plist */,
 				731C1DD91C59CCA600ECC18D /* Models */,
 			);
-			name = Forage;
 			path = Forage;
 			sourceTree = "<group>";
 		};
@@ -136,6 +145,16 @@
 				73495CA71C594CE700D2284C /* RestaurantCardView.xib */,
 			);
 			name = "Restaurant Feed";
+			sourceTree = "<group>";
+		};
+		73A039891C5D6C1200373A25 /* Restaurant Detail */ = {
+			isa = PBXGroup;
+			children = (
+				73A039871C5D6C0D00373A25 /* OverlaySegue.swift */,
+				73A0398A1C5D6E3B00373A25 /* RestaurantViewController.swift */,
+				73A0398C1C5D726C00373A25 /* RestaurantDishesPageViewController.swift */,
+			);
+			name = "Restaurant Detail";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +192,7 @@
 				TargetAttributes = {
 					735D5AC51C51C13F00CAE869 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = K5NSGHHBM5;
 					};
 				};
 			};
@@ -261,7 +281,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7318F46B1C5EBDBF0071688D /* NavigationViewController.swift in Sources */,
+				73A0398D1C5D726C00373A25 /* RestaurantDishesPageViewController.swift in Sources */,
 				73495CAE1C59746E00D2284C /* RestaurantCardView.swift in Sources */,
+				73A0398B1C5D6E3B00373A25 /* RestaurantViewController.swift in Sources */,
+				73A039881C5D6C0D00373A25 /* OverlaySegue.swift in Sources */,
 				735D5ACC1C51C13F00CAE869 /* RestaurantFeedViewController.swift in Sources */,
 				73495CAC1C59719800D2284C /* Dish.swift in Sources */,
 				735D5ACA1C51C13F00CAE869 /* AppDelegate.swift in Sources */,
@@ -382,10 +406,14 @@
 			baseConfigurationReference = C9B5C5A9DF1E8432BFC95083 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Forage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vc.atomic.labs.Forage;
 				PRODUCT_NAME = Forage;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -394,10 +422,14 @@
 			baseConfigurationReference = 6B22DC1F0EA2C4DD262A3525 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Forage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vc.atomic.labs.Forage;
 				PRODUCT_NAME = Forage;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

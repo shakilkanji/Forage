@@ -26,9 +26,24 @@ class ShortListViewController: UICollectionViewController {
         }
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        switch segue.identifier ?? "" {
+        case "ShowRestaurant":
+            let destinationVC = segue.destinationViewController as! RestaurantViewController
+            let restaurant = sender as! Restaurant
+            destinationVC.restaurant = restaurant
+        
+        default:
+            break
+        }
+    }
+    
     // MARK: Responders
     @IBAction func backButtonWasPressed(sender: UIButton?) {
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    @IBAction func prepareForUnwind(sender: UIStoryboardSegue?) {
     }
 }
 
@@ -48,7 +63,15 @@ extension ShortListViewController { // Collection View Data Source
         cell.imageView.setImageWithURL(NSURL(string: dish.photo)!, placeholderImage: nil)
         
         return cell
-    }    
+    }
+}
+
+extension ShortListViewController { // Collection View Delegation
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let restaurant = self.dishes[indexPath.item].restaurant
+        self.performSegueWithIdentifier("ShowRestaurant",
+            sender: restaurant)
+    }
 }
 
 extension ShortListViewController: UICollectionViewDelegateFlowLayout {

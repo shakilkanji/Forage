@@ -33,6 +33,10 @@ class Dish: PFObject, PFSubclassing {
             nearGeoPoint: PFGeoPoint(location: location),
         withinKilometers: radius / 1000.0)
         
+        if let shortList = NSUserDefaults.standardUserDefaults().objectForKey("ShortList") as? [String] {
+            query?.whereKey("objectId", notContainedIn: shortList)
+        }
+        
         query?.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) in
             guard let restaurants = objects as? [Restaurant] else { callback([]); return }
 
@@ -70,5 +74,13 @@ extension Dish { // Local Storage
         let query = self.query()
         query?.whereKey("objectId", containedIn: shortList)
         self.query(query, callback: callback)
+    }
+}
+
+extension Restaurant {
+    func dishes(callback: ([Dish]) -> Void) {
+        let query = Dish.query()
+        query?.whereKey("restaurant", equalTo: self)
+        Dish.query(query, callback: callback)
     }
 }
