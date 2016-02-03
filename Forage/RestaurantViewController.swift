@@ -28,6 +28,7 @@ class RestaurantViewController: UIViewController {
     }
     
     var restaurant: Restaurant!
+    var initialDish: Dish?
     var dishes: [Dish] = []
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -55,6 +56,11 @@ class RestaurantViewController: UIViewController {
         
         self.restaurant.dishes {
             self.dishes = $0
+            if let initialDish = self.initialDish {
+                self.dishes = self.dishes.filter { $0.objectId != initialDish.objectId }
+                self.dishes.insert(initialDish, atIndex: 0)
+            }
+            
             self.restaurantDishesVC.dishes = self.dishes
         }
         

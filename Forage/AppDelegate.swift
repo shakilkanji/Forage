@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Dish.registerSubclass()
         Restaurant.registerSubclass()
         
-        SharedAppDelegate = self
+        SharedAppDelegate = self        
         return true
     }
 }

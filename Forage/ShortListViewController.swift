@@ -30,8 +30,9 @@ class ShortListViewController: UICollectionViewController {
         switch segue.identifier ?? "" {
         case "ShowRestaurant":
             let destinationVC = segue.destinationViewController as! RestaurantViewController
-            let restaurant = sender as! Restaurant
-            destinationVC.restaurant = restaurant
+            let dish = sender as! Dish
+            destinationVC.restaurant = dish.restaurant
+            destinationVC.initialDish = dish
         
         default:
             break
@@ -68,9 +69,9 @@ extension ShortListViewController { // Collection View Data Source
 
 extension ShortListViewController { // Collection View Delegation
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let restaurant = self.dishes[indexPath.item].restaurant
+        let dish = self.dishes[indexPath.item]
         self.performSegueWithIdentifier("ShowRestaurant",
-            sender: restaurant)
+            sender: dish)
     }
 }
 

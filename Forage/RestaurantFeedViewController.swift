@@ -28,7 +28,7 @@ class RestaurantFeedViewController: UIViewController {
     @IBOutlet var distanceSlider: UISlider!
     @IBOutlet var permissionsContainerView: UIView!
     @IBOutlet var emptyContainerView: UIView!
-    
+
     private var cardStackIndex: Int = 0
     private var swipedCardIndex: Int = 0
     
@@ -74,6 +74,8 @@ class RestaurantFeedViewController: UIViewController {
             selector: "initialLocationWasFound:",
             name: AppDelegate.DidFindInitialLocationsNotification,
             object: nil)
+        
+        print((self.navigationItem.backBarButtonItem?.customView as? UIButton)?.imageForState(.Normal))
     }
     
     deinit {
@@ -96,7 +98,7 @@ class RestaurantFeedViewController: UIViewController {
     func reloadData(force: Bool = false) {
         guard let location = SharedAppDelegate?.locationManager.location else { return }
         
-        Dish.near(location, radius: self.distance) {
+        Dish.near(location, radius: self.distance, excludeListed: true) {
             self.dishes = $0
             self.reloadDataForSwipeableView(self.cardStackView)
             self.updateState()
@@ -126,7 +128,7 @@ extension RestaurantFeedViewController { // SwipeableView Data Source
         
         self.cardStackView.didSwipe = self.swipeableViewCardWasSwiped(self.cardStackView)
         
-        self.cardStackIndex = 0
+        self.cardStackIndex = -1
         self.cardStackView.discardViews()
         self.cardStackView.loadViews()
     }
@@ -186,8 +188,15 @@ extension RestaurantFeedViewController { // SwipeableView Data Source
 extension RestaurantFeedViewController { // SwipeableView Delegate
     func swipeableViewCardWasSwiped(swipeableView: ZLSwipeableView)(view: UIView, inDirection direction: Direction, directionVector: CGVector) {
         let dish = self.dishes![self.swipedCardIndex]
-        if direction == .Right {
+        
+        switch direction {
+        case Direction.Right:
             dish.saveToShortList()
+        case Direction.Left:
+            dish.saveToDiscardList()
+            
+        default:
+            break
         }
         
         self.swipedCardIndex += 1

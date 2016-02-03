@@ -166,15 +166,15 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Short List" id="EyH-9S-TeC">
-                        <barButtonItem key="leftBarButtonItem" id="KFb-1b-B7E">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Pz8-Pf-naR">
-                                <rect key="frame" x="20" y="2" width="40" height="39"/>
+                        <barButtonItem key="leftBarButtonItem" id="pY8-24-eKy">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="m86-Pm-l39">
+                                <rect key="frame" x="20" y="5" width="35" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Cards"/>
-                                <connections>
-                                    <action selector="backButtonWasPressed:" destination="DUb-xI-81P" eventType="touchUpInside" id="rsI-Pl-Z7L"/>
-                                </connections>
                             </button>
+                            <connections>
+                                <segue destination="fJk-sT-k2u" kind="unwind" unwindAction="prepareForUnwind:" id="ZIk-BT-6NK"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -396,11 +396,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ey-mY-0dj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="WK4-u8-XlI">
-                    <connections>
-                        <segue destination="fJk-sT-k2u" kind="unwind" unwindAction="prepareForUnwind:" id="Vvt-fw-aSY"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="WK4-u8-XlI"/>
             </objects>
             <point key="canvasLocation" x="1705" y="497"/>
         </scene>
