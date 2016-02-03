@@ -1,3 +1,4 @@
+
 Parse.Cloud.define("loadDishesNearLocation", function(request,response) {
 	var FB = require('cloud/FB');
 	var IG = require('cloud/IG');
