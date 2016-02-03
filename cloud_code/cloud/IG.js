@@ -11,7 +11,8 @@ exports.instagramIDsForFacebookIDs = function (facebookIDs) {
 		return Parse.Cloud.httpRequest({
 			url: IGFinalUrl
 		});
-	})).then(function (httpResponses) {
+	})).then(function () {
+		var httpResponses = [].slice.call(arguments);
 		return Parse.Promise.as(httpResponses.map(function (httpResponse) {
 			var data = JSON.parse(httpResponse.text).data;
 			return data[0].id;
@@ -31,9 +32,14 @@ exports.instagramImagesforIDs = function (instagramIDs) {
 		return Parse.Cloud.httpRequest({
 			url: IGFinalUrl
 		});
-	})).then(function (httpResponses) {
+	})).then(function () {
+		var httpResponses = [].slice.call(arguments);
 		return Parse.Promise.as(httpResponses.map(function (httpResponse) {
 			var data = JSON.parse(httpResponse.text).data;
+			if (data.length == 0) {
+				return null;
+			}
+
 			return data[0].images.standard_resolution.url;
 		}));
 	});
