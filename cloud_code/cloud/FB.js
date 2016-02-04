@@ -7,9 +7,10 @@ exports.facebookPlacesNearLocation = function (lat,lon) {
 		type : "place",
 		center : lat + "\," + lon,
 		distance : 1000,
-		access_token : "579372065561657|9d066921951efb06c79ff6ce023b225c"
+		access_token : "579372065561657|9d066921951efb06c79ff6ce023b225c",
+		limit: 1000
 	});
-
+	
 	return Parse.Cloud.httpRequest({
 		url: FBFinalUrl
 	}).then(function (httpResponse) {
@@ -21,5 +22,17 @@ exports.facebookPlacesNearLocation = function (lat,lon) {
 }
 
 exports.restaurantForFacebookPlace = function (place) {
+	var Restaurant = Parse.Object.extend("Restaurant");
+	var restaurant = new Restaurant();
 
+	// TODO: Verify uniqueness.
+
+	restaurant.set("name", place.name);
+	restaurant.set("facebookId", place.id);
+	restaurant.set("location", new Parse.GeoPoint({
+		latitude: place.location.latitude,
+		longitude: place.location.longitude
+	}));
+	
+	return restaurant;
 }

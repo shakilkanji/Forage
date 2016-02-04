@@ -23,6 +23,22 @@ exports.instagramIDsForFacebookIDs = function (facebookIDs) {
 exports.instagramImagesforIDs = function (instagramIDs) {
 	var qs = require('qs');
 	var IGMediaUrl = "https://api.instagram.com/v1/locations/";
+	var IGValidHashtags = [
+		"food",
+		"foodporn",
+		"foodpic",
+		"foodinsta",
+		"foodinstagram",
+		"foodgasm",
+		"instafood",
+		"foodstagrams",
+		"foodphotography",
+		"foodstyling",
+		"beautifulcuisines",
+		"foodlove",
+		"foodphoto",
+		"igfood"
+	];
 
 	return Parse.Promise.when(instagramIDs.map(function (instagramID) {
 		var IGFinalUrl = IGMediaUrl + instagramID + "/media/recent?" + qs.stringify({
@@ -40,13 +56,27 @@ exports.instagramImagesforIDs = function (instagramIDs) {
 				return null;
 			}
 
-			return data.map(function (igObject) {
-				return igObject.tags;
-			});
+			return data
+				.filter(function (igObject) {
+					return igObject.tags.filter(function (tag) {
+						return IGValidHashtags.indexOf(tag) != -1;
+					}).length > 0;
+				})
+				.map(function (igObject) {
+					return igObject.images.standard_resolution.url;
+				});
 		}));
 	});
 }
 
 exports.dishForImage = function (image, restaurant) {
-
+	var Dish = Parse.Object.extend("Dish");
+	var dish = new Dish();
+	
+	// TODO: Verify uniqueness.
+	
+	dish.set("restaurant", restaurant);
+	dish.set("photo", image);
+	
+	return dish;
 }
