@@ -9,17 +9,4 @@
 import UIKit
 
 class NavigationViewController: UINavigationController {
-    // MARK: Accessors
-    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue? {
-        switch fromViewController {
-        case is RestaurantViewController:
-            return OverlaySegue.Unwind(identifier: identifier,
-                source: toViewController,
-                destination: fromViewController,
-                performHandler: {})
-            
-        default:
-            return nil
-        }
-    }
 }

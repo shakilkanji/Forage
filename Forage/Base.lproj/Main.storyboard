@@ -117,7 +117,7 @@
             <objects>
                 <collectionViewController id="DUb-xI-81P" userLabel="Short List View Controller" customClass="ShortListViewController" customModule="Forage" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="UBy-lL-bVR">
-                        <rect key="frame" x="0.0" y="64" width="600" height="836"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VEb-Xi-3xJ">
@@ -168,13 +168,14 @@
                     <navigationItem key="navigationItem" title="Short List" id="EyH-9S-TeC">
                         <barButtonItem key="leftBarButtonItem" id="pY8-24-eKy">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="m86-Pm-l39">
-                                <rect key="frame" x="20" y="5" width="35" height="34"/>
+                                <rect key="frame" x="20" y="2" width="40" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Cards"/>
+                                <connections>
+                                    <action selector="backButtonWasPressed:" destination="DUb-xI-81P" eventType="touchUpInside" id="b72-VK-E62"/>
+                                    <segue destination="fJk-sT-k2u" kind="unwind" unwindAction="prepareForUnwind:" id="Hnt-lV-tUn"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <segue destination="fJk-sT-k2u" kind="unwind" unwindAction="prepareForUnwind:" id="ZIk-BT-6NK"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -338,7 +339,7 @@
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="phontButtonWasPressed:" destination="DSi-st-mja" eventType="touchUpInside" id="Eod-7Y-7wr"/>
+                                                        <action selector="phoneButtonWasPressed:" destination="DSi-st-mja" eventType="touchUpInside" id="oUq-g5-K6j"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -393,12 +394,17 @@
                         <outlet property="nameLabel" destination="tXu-dQ-zbz" id="py4-zW-Lnd"/>
                         <outlet property="phoneButton" destination="ejW-iC-xDd" id="cwF-zg-js2"/>
                         <outlet property="priceLabel" destination="ymQ-Ab-eHh" id="7b5-wa-ffB"/>
+                        <segue destination="DUb-xI-81P" kind="custom" identifier="Unwind" customClass="UnwindOverlaySegue" customModule="Forage" customModuleProvider="target" id="i2Q-U1-5kk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ey-mY-0dj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="WK4-u8-XlI"/>
+                <tapGestureRecognizer id="WK4-u8-XlI">
+                    <connections>
+                        <action selector="tapGestureWasRecognized:" destination="DSi-st-mja" id="QYu-py-oWj"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1705" y="497"/>
+            <point key="canvasLocation" x="1705" y="647"/>
         </scene>
         <!--Restaurant Dishes Page View Controller-->
         <scene sceneID="R6N-pG-5hR">
@@ -567,4 +573,7 @@
         <image name="PinDetails" width="11" height="16"/>
         <image name="ShortList" width="35" height="34"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="i2Q-U1-5kk"/>
+    </inferredMetricsTieBreakers>
 </document>

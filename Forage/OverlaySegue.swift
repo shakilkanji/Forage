@@ -9,21 +9,6 @@
 import UIKit
 
 class OverlaySegue: UIStoryboardSegue {
-    class Unwind: UIStoryboardSegue {
-        override func perform() {
-            let destinationView = self.destinationViewController.view.snapshotViewAfterScreenUpdates(false)
-            self.destinationViewController.dismissViewControllerAnimated(false,
-                completion: nil)
-            
-            UIApplication.sharedApplication().keyWindow?.addSubview(destinationView)
-            UIView.animateWithDuration(0.10, animations: {
-                destinationView.alpha = 0.0
-            }, completion: { (_) in
-                destinationView.removeFromSuperview()
-            })
-        }
-    }
-    
     override func perform() {
         let sourceView = UIApplication.sharedApplication().keyWindow!.snapshotViewAfterScreenUpdates(false)
         self.destinationViewController.view.insertSubview(sourceView, atIndex: 0)
@@ -37,6 +22,21 @@ class OverlaySegue: UIStoryboardSegue {
             self.sourceViewController.presentViewController(self.destinationViewController,
                 animated: false,
                 completion: nil)
+        })
+    }
+}
+
+class UnwindOverlaySegue: UIStoryboardSegue {
+    override func perform() {
+        let sourceView = self.sourceViewController.view.snapshotViewAfterScreenUpdates(false)
+        self.sourceViewController.dismissViewControllerAnimated(false,
+            completion: nil)
+        
+        UIApplication.sharedApplication().keyWindow?.addSubview(sourceView)
+        UIView.animateWithDuration(0.10, animations: {
+            sourceView.alpha = 0.0
+        }, completion: { (_) in
+            sourceView.removeFromSuperview()
         })
     }
 }

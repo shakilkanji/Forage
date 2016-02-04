@@ -24,6 +24,8 @@ class ShortListViewController: UICollectionViewController {
             self.dishes = dishes
             self.collectionView?.reloadData()
         }
+        
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -42,9 +44,6 @@ class ShortListViewController: UICollectionViewController {
     // MARK: Responders
     @IBAction func backButtonWasPressed(sender: UIButton?) {
         self.navigationController?.popViewControllerAnimated(true)
-    }
-    
-    @IBAction func prepareForUnwind(sender: UIStoryboardSegue?) {
     }
 }
 
@@ -104,3 +103,5 @@ extension ShortListViewController: DZNEmptyDataSetSource {
         return NSAttributedString(string: text, attributes: attributes as? [String : AnyObject])
     }
 }
+
+extension ShortListViewController: UIGestureRecognizerDelegate {}

@@ -74,8 +74,6 @@ class RestaurantFeedViewController: UIViewController {
             selector: "initialLocationWasFound:",
             name: AppDelegate.DidFindInitialLocationsNotification,
             object: nil)
-        
-        print((self.navigationItem.backBarButtonItem?.customView as? UIButton)?.imageForState(.Normal))
     }
     
     deinit {

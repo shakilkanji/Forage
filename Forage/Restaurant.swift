@@ -13,8 +13,8 @@ class Restaurant: PFObject, PFSubclassing {
     @NSManaged var location: PFGeoPoint
     @NSManaged var name: String
     @NSManaged var priceRate: Int
-    @NSManaged var details: String
-    @NSManaged var phone: String
+    @NSManaged var details: String?
+    @NSManaged var phone: String?
     
     // MARK: Class Accessors
     static func parseClassName() -> String {

@@ -51,6 +51,9 @@ class RestaurantViewController: UIViewController {
         self.phoneButton.layer.shadowOffset = CGSizeMake(0.0, 2.0)
         self.phoneButton.layer.shadowRadius = 15.0
         
+        self.phoneButton.alpha = self.restaurant.phone != nil ? 1.0 : 0.5
+        self.phoneButton.enabled = self.restaurant.phone != nil
+        
         self.nameLabel.text = self.restaurant.name
         self.detailsLabel.text = self.restaurant.details
         
@@ -84,7 +87,12 @@ class RestaurantViewController: UIViewController {
     }
     
     // MARK: Responders
-    @IBAction func phontButtonWasPressed(sender: UIButton?) {
-        UIApplication.sharedApplication().openURL(NSURL(string: self.restaurant.phone)!)
+    @IBAction func phoneButtonWasPressed(sender: UIButton?) {
+        UIApplication.sharedApplication().openURL(NSURL(string: self.restaurant.phone!)!)
+    }
+    
+    @IBAction func tapGestureWasRecognized(sender: UIGestureRecognizer?) {
+        self.performSegueWithIdentifier("Unwind",
+            sender: nil)
     }
 }
