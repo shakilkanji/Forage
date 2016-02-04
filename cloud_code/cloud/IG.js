@@ -40,7 +40,9 @@ exports.instagramImagesforIDs = function (instagramIDs) {
 				return null;
 			}
 
-			return data[0].images.standard_resolution.url;
+			return data.map(function (igObject) {
+				return igObject.tags;
+			});
 		}));
 	});
 }

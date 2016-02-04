@@ -1,5 +1,7 @@
 exports.facebookPlacesNearLocation = function (lat,lon) {
 	var qs = require('qs');
+	var FBValidCategories =["restaurant/cafe", "bar"];
+
 	var FBSearchUrl = "https://graph.facebook.com/search?";
 	var FBFinalUrl = FBSearchUrl + qs.stringify({
 		type : "place",
@@ -11,7 +13,9 @@ exports.facebookPlacesNearLocation = function (lat,lon) {
 	return Parse.Cloud.httpRequest({
 		url: FBFinalUrl
 	}).then(function (httpResponse) {
-		var data = JSON.parse(httpResponse.text).data;
+		var data = JSON.parse(httpResponse.text).data.filter(function (place) {
+			return FBValidCategories.indexOf(place.category.toLowerCase()) != -1;
+		});
 		return Parse.Promise.as(data);
 	});
 }
