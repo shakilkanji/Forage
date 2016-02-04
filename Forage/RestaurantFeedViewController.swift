@@ -100,6 +100,15 @@ class RestaurantFeedViewController: UIViewController {
             self.dishes = $0
             self.reloadDataForSwipeableView(self.cardStackView)
             self.updateState()
+            
+            // Update on server
+            Dish.loadNear(location) { (newDishes: [Dish]) in
+                guard let dishes = self.dishes else { return }
+                self.dishes = dishes + newDishes
+                
+                self.reloadDataForSwipeableView(self.cardStackView)
+                self.updateState()
+            }
         }
     }
     

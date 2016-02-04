@@ -47,6 +47,21 @@ class Dish: PFObject, PFSubclassing {
         }
     }
     
+    class func loadNear(location: CLLocation, callback: ([Dish]) -> Void) {
+        let params = [
+            "lat": "\(location.coordinate.latitude)",
+            "lon": "\(location.coordinate.longitude)"
+        ]
+        
+        PFCloud.callFunctionInBackground("loadDishesNearLocation", withParameters: params) { (result: AnyObject?, error: NSError?) in
+            var newDishes: [Dish] = []
+            defer { callback(newDishes) }
+            
+            guard let dishes = (result as? NSDictionary)?["result"] as? [Dish] else { return }
+            newDishes = dishes
+        }
+    }
+    
     private class func query(query: PFQuery?, callback: ([Dish]) -> Void) {
         query?.includeKey("restaurant")
         query?.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) in
