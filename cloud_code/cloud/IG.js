@@ -20,7 +20,7 @@ exports.instagramIDsForFacebookIDs = function (facebookIDs) {
 	});
 }
 
-exports.instagramImagesforIDs = function (instagramIDs) {
+exports.instagramPostsforIDs = function (instagramIDs) {
 	var qs = require('qs');
 	var IGMediaUrl = "https://api.instagram.com/v1/locations/";
 	var IGValidHashtags = [
@@ -63,20 +63,19 @@ exports.instagramImagesforIDs = function (instagramIDs) {
 					}).length > 0;
 				})
 				.map(function (igObject) {
-					return igObject.images.standard_resolution.url;
+					return igObject;
 				});
 		}));
 	});
 }
 
-exports.dishForImage = function (image, restaurant) {
+exports.dishForInstagramPost = function (instagramPost, restaurant) {
 	var Dish = Parse.Object.extend("Dish");
 	var dish = new Dish();
 	
-	// TODO: Verify uniqueness.
-	
 	dish.set("restaurant", restaurant);
-	dish.set("photo", image);
+	dish.set("photo", instagramPost.images.standard_resolution.url);
+	dish.set("instagramId", instagramPost.id);
 	
 	return dish;
 }

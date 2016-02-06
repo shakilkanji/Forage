@@ -25,8 +25,6 @@ exports.restaurantForFacebookPlace = function (place) {
 	var Restaurant = Parse.Object.extend("Restaurant");
 	var restaurant = new Restaurant();
 
-	// TODO: Verify uniqueness.
-
 	restaurant.set("name", place.name);
 	restaurant.set("facebookId", place.id);
 	restaurant.set("location", new Parse.GeoPoint({
