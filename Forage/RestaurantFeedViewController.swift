@@ -143,7 +143,7 @@ extension RestaurantFeedViewController { // SwipeableView Data Source
         
         self.cardStackView.didCancel = { (view: UIView) in
             guard let cardView = view.subviews.first as? RestaurantCardView else { return }
-            UIView.animateWithDuration(0.5, animations: { () -> Void in
+            UIView.animateWithDuration(0.5, animations: {
                 cardView.heartImageView.alpha = 0.0
             })
         }
