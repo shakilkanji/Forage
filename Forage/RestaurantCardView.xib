@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -35,6 +35,9 @@
                         <constraint firstItem="0cF-8E-ajP" firstAttribute="centerX" secondItem="PLH-bT-CXs" secondAttribute="centerX" id="fCL-tj-xgr"/>
                     </constraints>
                 </view>
+                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BigHeart" translatesAutoresizingMaskIntoConstraints="NO" id="kfq-eg-vWH">
+                    <rect key="frame" x="99" y="101" width="157" height="153"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -55,10 +58,14 @@
                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
             </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="heartImageView" destination="kfq-eg-vWH" id="hp8-0N-cNP"/>
                 <outlet property="imageView" destination="OFv-72-kCe" id="zUM-x0-UI1"/>
                 <outlet property="label" destination="0cF-8E-ajP" id="LZl-Sg-yYL"/>
             </connections>
             <point key="canvasLocation" x="368.5" y="348"/>
         </view>
     </objects>
+    <resources>
+        <image name="BigHeart" width="105" height="100"/>
+    </resources>
 </document>
