@@ -44,7 +44,7 @@ class RestaurantViewController: UIViewController {
         self.contentView.layer.shadowOffset = CGSizeMake(0.0, 2.0)
         self.contentView.layer.shadowRadius = 15.0
         
-        self.phoneButton.layer.borderWidth = 3.0
+        self.phoneButton.layer.borderWidth = 2.0
         self.phoneButton.layer.borderColor = UIColor.whiteColor().CGColor
         self.phoneButton.layer.shadowColor = UIColor.blackColor().CGColor
         self.phoneButton.layer.shadowOpacity = 0.07

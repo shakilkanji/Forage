@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -23,7 +23,7 @@
                     <rect key="frame" x="0.0" y="355" width="355" height="115"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cF-8E-ajP">
-                            <rect key="frame" x="155" y="47" width="44" height="21"/>
+                            <rect key="frame" x="155" y="47" width="44" height="22"/>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -35,15 +35,20 @@
                         <constraint firstItem="0cF-8E-ajP" firstAttribute="centerX" secondItem="PLH-bT-CXs" secondAttribute="centerX" id="fCL-tj-xgr"/>
                     </constraints>
                 </view>
+                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BigHeart" translatesAutoresizingMaskIntoConstraints="NO" id="kfq-eg-vWH">
+                    <rect key="frame" x="125" y="128" width="105" height="100"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="PLH-bT-CXs" firstAttribute="top" secondItem="OFv-72-kCe" secondAttribute="bottom" id="2cQ-sg-Zwx"/>
+                <constraint firstItem="kfq-eg-vWH" firstAttribute="centerY" secondItem="OFv-72-kCe" secondAttribute="centerY" id="B1v-We-Fbi"/>
                 <constraint firstAttribute="trailing" secondItem="OFv-72-kCe" secondAttribute="trailing" id="BaM-kU-vqw"/>
                 <constraint firstAttribute="bottom" secondItem="PLH-bT-CXs" secondAttribute="bottom" id="D8Q-jJ-fRE"/>
                 <constraint firstItem="PLH-bT-CXs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="a9F-VK-ZHw"/>
                 <constraint firstAttribute="trailing" secondItem="PLH-bT-CXs" secondAttribute="trailing" id="nW6-hO-jZ5"/>
                 <constraint firstItem="OFv-72-kCe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="syg-fV-xzm"/>
+                <constraint firstItem="kfq-eg-vWH" firstAttribute="centerX" secondItem="OFv-72-kCe" secondAttribute="centerX" id="uUC-Qs-vn2"/>
                 <constraint firstItem="OFv-72-kCe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ycD-yb-l51"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -55,10 +60,14 @@
                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
             </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="heartImageView" destination="kfq-eg-vWH" id="hp8-0N-cNP"/>
                 <outlet property="imageView" destination="OFv-72-kCe" id="zUM-x0-UI1"/>
                 <outlet property="label" destination="0cF-8E-ajP" id="LZl-Sg-yYL"/>
             </connections>
             <point key="canvasLocation" x="368.5" y="348"/>
         </view>
     </objects>
+    <resources>
+        <image name="BigHeart" width="105" height="100"/>
+    </resources>
 </document>

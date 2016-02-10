@@ -12,4 +12,5 @@ class RestaurantCardView: UIView {
     // MARK: Properties
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var label: UILabel!
+    @IBOutlet var heartImageView: UIImageView!
 }
