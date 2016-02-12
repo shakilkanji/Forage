@@ -39,9 +39,8 @@ class RestaurantFeedViewController: UIViewController {
         }
     }
     
-    private let conversionFactor: Float = 4.0
     private var miles: Float {
-        return self.distanceSlider.value * self.conversionFactor
+        return self.distanceSlider.value
     }
     
     private var distance: CLLocationDistance {
@@ -123,7 +122,15 @@ class RestaurantFeedViewController: UIViewController {
     }
     
     @IBAction func distanceSliderValueChanged(sender: UISlider?) {
-        self.distanceLabel.text = "\(Int(round(self.miles))) mi."
+        let formatter = NSNumberFormatter()
+        formatter.minimumFractionDigits = 1
+        formatter.maximumFractionDigits = 1
+        
+        formatter.minimumIntegerDigits = 1
+        formatter.maximumIntegerDigits = 2
+        
+        let miles = formatter.stringFromNumber(NSNumber(float: self.miles))!
+        self.distanceLabel.text = "\(miles) mi."
     }
 }
 
