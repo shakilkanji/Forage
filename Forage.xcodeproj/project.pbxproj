@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		730EFCA31C6E660800ECC953 /* RestaurantDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 730EFCA21C6E660800ECC953 /* RestaurantDetailViewController.xib */; };
 		7318F46B1C5EBDBF0071688D /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7318F46A1C5EBDBF0071688D /* NavigationViewController.swift */; };
 		731C1DD31C5988EF00ECC18D /* PermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731C1DD21C5988EF00ECC18D /* PermissionsViewController.swift */; };
 		73495CA81C594CE700D2284C /* RestaurantCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73495CA71C594CE700D2284C /* RestaurantCardView.xib */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		6B22DC1F0EA2C4DD262A3525 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		730EFCA21C6E660800ECC953 /* RestaurantDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantDetailViewController.xib; sourceTree = "<group>"; };
 		7318F46A1C5EBDBF0071688D /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		731C1DD21C5988EF00ECC18D /* PermissionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionsViewController.swift; sourceTree = "<group>"; };
 		73495CA71C594CE700D2284C /* RestaurantCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantCardView.xib; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				73A039871C5D6C0D00373A25 /* OverlaySegue.swift */,
 				73A0398A1C5D6E3B00373A25 /* RestaurantViewController.swift */,
 				73A0398C1C5D726C00373A25 /* RestaurantDishesPageViewController.swift */,
+				730EFCA21C6E660800ECC953 /* RestaurantDetailViewController.xib */,
 			);
 			name = "Restaurant Detail";
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 				735D5AD41C51C13F00CAE869 /* LaunchScreen.storyboard in Resources */,
 				73495CA81C594CE700D2284C /* RestaurantCardView.xib in Resources */,
 				735D5AD11C51C13F00CAE869 /* Assets.xcassets in Resources */,
+				730EFCA31C6E660800ECC953 /* RestaurantDetailViewController.xib in Resources */,
 				735D5ACF1C51C13F00CAE869 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -79,28 +79,13 @@ extension RestaurantDishesPageViewController: UIPageViewControllerDataSource {
     func pageViewController(pageViewController: UIPageViewController, viewControllerAtIndex index: Int) -> UIViewController {
         let dish = self.dishes[index]
         
-        let vc = UIViewController()
-        let imageView = UIImageView()
-        let container = vc.view
+        let vc = UIViewController(nibName: "RestaurantDetailViewController", bundle: nil)
+        vc.view.tag = index
         
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        container.addSubview(imageView)
-        
-        let metrics = ["width": container.bounds.width, "height": container.bounds.height]
-        let views = ["container": container, "imageView": imageView]
-        ["H:|[imageView(width)]", "V:|[imageView(height)]"].forEach {
-            container.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat($0,
-                options: .AlignAllLeft,
-                metrics: metrics,
-                views: views))
+        if let imageView = vc.view.viewWithTag(1) as? UIImageView {
+            imageView.setImageWithURL(NSURL(string: dish.photo)!, placeholderImage: nil)
         }
         
-        imageView.backgroundColor = UIColor.blackColor()
-        imageView.contentMode = .ScaleAspectFill
-        imageView.layer.masksToBounds = true
-        imageView.setImageWithURL(NSURL(string: dish.photo)!, placeholderImage: nil)
-        
-        container.tag = index
         return vc
     }
     
