@@ -32,6 +32,7 @@ class RestaurantFeedViewController: UIViewController {
     private var cardStackIndex: Int = 0
     private var swipedCardIndex: Int = 0
     
+    
     private var dishes: [Dish]? {
         didSet {
             self.updateState()
@@ -135,13 +136,25 @@ extension RestaurantFeedViewController { // SwipeableView Data Source
         
         self.cardStackView.didSwipe = self.swipeableViewCardWasSwiped(self.cardStackView)
         
+        self.cardStackView.swiping = { (view: UIView, _, translation: CGPoint) in
+            guard let cardView = view.subviews.first as? RestaurantCardView else { return }
+            cardView.heartImageView.alpha = translation.x / 100
+        }
+        
+        self.cardStackView.didCancel = { (view: UIView) in
+            guard let cardView = view.subviews.first as? RestaurantCardView else { return }
+            UIView.animateWithDuration(0.5, animations: {
+                cardView.heartImageView.alpha = 0.0
+            })
+        }
+        
         self.cardStackIndex = -1
         self.cardStackView.discardViews()
         self.cardStackView.loadViews()
     }
     
     func numberOfViewsInSwipeableView(swipeableView: ZLSwipeableView) -> UInt {
-        return UInt(3)
+        return UInt(2)
     }
     
     func nextViewForSwipeableView(swipeableView: ZLSwipeableView)() -> UIView? {
