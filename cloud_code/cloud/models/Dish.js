@@ -27,10 +27,10 @@ var Dish = Parse.Object.extend("Dish", {
     var flattenedPosts = [].concat.apply([], igPosts);
     
     // Prefetch existing dishes
-    var existingDishesQuery = new Parse.Query("Dish");
-    existingDishesQuery.containedIn("instagramId", flattenedPosts.map(function (post) {
-      return post.id;
-    }));
+    var existingDishesQuery = new Parse.Query("Dish")
+      .containedIn("instagramId", flattenedPosts.map(function (post) {
+        return post.id;
+      }));
     
     return existingDishesQuery.find().then(function (existingDishes) {
       // Build dishes
@@ -51,14 +51,13 @@ var Dish = Parse.Object.extend("Dish", {
       });
       
       var returnValidDishes = function () {
-        var query = new Parse.Query("Dish");
-        query.containedIn("instagramId", flattenedPosts.map(function (post) {
-          return post.id;
-        }));
-        
-        query.notContainedIn("instagramId", existingDishes.map(function (dish) {
-          return dish.get("instagramId");
-        }));
+        var query = new Parse.Query("Dish")
+          .containedIn("instagramId", flattenedPosts.map(function (post) {
+            return post.id;
+          }))
+          .notContainedIn("instagramId", existingDishes.map(function (dish) {
+            return dish.get("instagramId");
+          }));
         
         return query.find();
       };
@@ -75,8 +74,9 @@ var Dish = Parse.Object.extend("Dish", {
 
 // Hooks
 Parse.Cloud.beforeSave("Dish", function(request, response) {
-  var query = new Parse.Query("Dish");
-  query.equalTo("instagramId", request.object.get("instagramId"));
+  var query = new Parse.Query("Dish")
+    .equalTo("instagramId", request.object.get("instagramId"));
+    
   query.first().then(function (dish) {
     if (dish && dish.id != dish.object.id) {
       dish.save(request.object.updated()).then(function () {

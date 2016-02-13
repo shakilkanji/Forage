@@ -17,16 +17,16 @@ var Restaurant = Parse.Object.extend("Restaurant", {
     return restaurant;
   },
   
-  allForFacebookPlaces: function (places) {    
+  allForFacebookPlaces: function (places) {
     var restaurants = places.map(function (place) {
       return Restaurant.forFacebookPlace(place);
     });
     
     var returnValidRestaurants = function () {
-      var query = new Parse.Query("Restaurant");
-      query.containedIn("facebookId", places.map(function (place) {
-        return place.id;
-      }));
+      var query = new Parse.Query("Restaurant")
+        .containedIn("facebookId", places.map(function (place) {
+          return place.id;
+        }));
       
       return query.find();
     };
@@ -41,8 +41,9 @@ var Restaurant = Parse.Object.extend("Restaurant", {
 
 // Hooks
 Parse.Cloud.beforeSave("Restaurant", function(request, response) {
-  var query = new Parse.Query("Restaurant");
-  query.equalTo("facebookId", request.object.get("facebookId"));
+  var query = new Parse.Query("Restaurant")
+    .equalTo("facebookId", request.object.get("facebookId"));
+    
   query.first().then(function (restaurant) {
     if (restaurant && restaurant.id != request.object.id) {
       response.error('Duplicate entry. Existing Restaurant was updated.');

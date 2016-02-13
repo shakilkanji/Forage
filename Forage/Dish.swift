@@ -12,7 +12,7 @@ class Dish: PFObject, PFSubclassing {
     // MARK: Properties
     @NSManaged var photo: String
     @NSManaged var restaurant: Restaurant
-
+    
     // MARK: Class Accessors
     static func parseClassName() -> String {
         return "Dish"
@@ -28,22 +28,19 @@ class Dish: PFObject, PFSubclassing {
             return
         }
         
-        let query = Restaurant.query()
-        query?.whereKey("location",
-            nearGeoPoint: PFGeoPoint(location: location),
-        withinKilometers: radius / 1000.0)
-
-        query?.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) in
-            guard let restaurants = objects as? [Restaurant] else { callback([]); return }
-
-            let query = Dish.query()
-            query?.whereKey("restaurant", containedIn: restaurants)
+        let params: [NSObject: AnyObject] = [
+            "lat": location.coordinate.latitude,
+            "lon": location.coordinate.longitude,
+            "dist": radius / 1000.0,
+            "excluded": Dish.shortListIds + Dish.discardListIds
+        ]
+        
+        PFCloud.callFunctionInBackground("dishesNearLocation", withParameters: params) { (result: AnyObject?, error: NSError?) in
+            var dishes: [Dish] = []
+            defer { callback(dishes) }
             
-            if excludeListed {
-                query?.whereKey("objectId", notContainedIn: Dish.shortListIds + Dish.discardListIds)
-            }
-            
-            self.query(query, callback: callback)
+            guard let objects = result as? [Dish] else { return }
+            dishes = objects
         }
     }
     

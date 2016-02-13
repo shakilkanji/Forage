@@ -1,8 +1,29 @@
+// Imports
 var FB = require('cloud/clients/FB');
 var IG = require('cloud/clients/IG');
 var Restaurant = require('cloud/models/Restaurant');
 var Dish = require('cloud/models/Dish');
 
+// Feed Loading
+Parse.Cloud.define("dishesNearLocation", function (request, response) {
+	var restaurantQuery = new Parse.Query("Restaurant")
+		.withinKilometers("location", new Parse.GeoPoint({
+			latitude: request.params.lat,
+			longitude: request.params.lon
+		}), request.params.dist);
+
+	var dishQuery = new Parse.Query("Dish")
+		.include("restaurant")
+		.matchesQuery("restaurant", restaurantQuery)
+		.notContainedIn("objectId", (request.params.excluded || []))
+		.descending("instagramLikeCount");
+	
+	dishQuery.find().then(function (dishes) {
+		response.success(dishes);
+	});
+});
+
+// Data Reloading
 Parse.Cloud.define("loadDishesNearLocation", function(request, response) {
 	Parse.Cloud.useMasterKey();
 	

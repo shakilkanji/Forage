@@ -194,7 +194,6 @@ extension RestaurantFeedViewController { // SwipeableView Data Source
         card.layer.shadowRadius = 15.0
         
         content.imageView.setImageWithURL(NSURL(string: dish.photo)!, placeholderImage: nil)
-        content.label.text = dish.restaurant.name
         
         content.translatesAutoresizingMaskIntoConstraints = false
         card.addSubview(content)
