@@ -17,9 +17,7 @@ var Restaurant = Parse.Object.extend("Restaurant", {
     return restaurant;
   },
   
-  allForFacebookPlaces: function (places) {
-    console.log("0");
-    
+  allForFacebookPlaces: function (places) {    
     var restaurants = places.map(function (place) {
       return Restaurant.forFacebookPlace(place);
     });
@@ -30,7 +28,6 @@ var Restaurant = Parse.Object.extend("Restaurant", {
         return place.id;
       }));
       
-      console.log("1");
       return query.find();
     };
     

@@ -9,7 +9,6 @@ Parse.Cloud.define("loadDishesNearLocation", function(request, response) {
 	fetchData(request.params.lat, request.params.lon)
 		.then(createEntries)
 		.then(function(dishes) {
-			console.log("4");
 			response.success(dishes);
 		});
 });
@@ -33,7 +32,6 @@ function fetchData(lat, lon) {
 function createEntries(fbPlaces, igPosts) {
 	// Build/upsert restaurants
 	return Restaurant.allForFacebookPlaces(fbPlaces).then(function (restaurants) {
-		console.log("2");
 		// Build/upsert dishes
 		return Dish.allForInstagramPosts(igPosts, fbPlaces, restaurants);
 	});

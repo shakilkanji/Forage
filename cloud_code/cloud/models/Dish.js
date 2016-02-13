@@ -60,11 +60,9 @@ var Dish = Parse.Object.extend("Dish", {
           return dish.get("instagramId");
         }));
         
-        console.log("1");
         return query.find();
       };
       
-      console.log("3");
       // Upsert dishes
       return Parse.Object.saveAll(allDishes).then(function (dishes) {
         return returnValidDishes();
