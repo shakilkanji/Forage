@@ -20,17 +20,3 @@ exports.facebookPlacesNearLocation = function (lat,lon) {
 		return Parse.Promise.as(data);
 	});
 }
-
-exports.restaurantForFacebookPlace = function (place) {
-	var Restaurant = Parse.Object.extend("Restaurant");
-	var restaurant = new Restaurant();
-
-	restaurant.set("name", place.name);
-	restaurant.set("facebookId", place.id);
-	restaurant.set("location", new Parse.GeoPoint({
-		latitude: place.location.latitude,
-		longitude: place.location.longitude
-	}));
-	
-	return restaurant;
-}

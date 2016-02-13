@@ -68,14 +68,3 @@ exports.instagramPostsforIDs = function (instagramIDs) {
 		}));
 	});
 }
-
-exports.dishForInstagramPost = function (instagramPost, restaurant) {
-	var Dish = Parse.Object.extend("Dish");
-	var dish = new Dish();
-	
-	dish.set("restaurant", restaurant);
-	dish.set("photo", instagramPost.images.standard_resolution.url);
-	dish.set("instagramId", instagramPost.id);
-	
-	return dish;
-}
