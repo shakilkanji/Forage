@@ -25,7 +25,7 @@ var Dish = Parse.Object.extend("Dish", {
   
   allForInstagramPosts: function (igPosts, fbPlaces, restaurants) {
     var flattenedPosts = [].concat.apply([], igPosts);
-    
+        
     // Prefetch existing dishes
     var existingDishesQuery = new Parse.Query("Dish")
       .containedIn("instagramId", flattenedPosts.map(function (post) {

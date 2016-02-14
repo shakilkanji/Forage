@@ -19,6 +19,8 @@
 		735D5ACF1C51C13F00CAE869 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 735D5ACD1C51C13F00CAE869 /* Main.storyboard */; };
 		735D5AD11C51C13F00CAE869 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 735D5AD01C51C13F00CAE869 /* Assets.xcassets */; };
 		735D5AD41C51C13F00CAE869 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 735D5AD21C51C13F00CAE869 /* LaunchScreen.storyboard */; };
+		736020801C6FFFCD00395F67 /* UserExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7360207F1C6FFFCD00395F67 /* UserExtensions.swift */; };
+		736020821C70413400395F67 /* RestaurantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736020811C70413400395F67 /* RestaurantDetailViewController.swift */; };
 		73A039881C5D6C0D00373A25 /* OverlaySegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A039871C5D6C0D00373A25 /* OverlaySegue.swift */; };
 		73A0398B1C5D6E3B00373A25 /* RestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A0398A1C5D6E3B00373A25 /* RestaurantViewController.swift */; };
 		73A0398D1C5D726C00373A25 /* RestaurantDishesPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A0398C1C5D726C00373A25 /* RestaurantDishesPageViewController.swift */; };
@@ -44,6 +46,8 @@
 		735D5AD01C51C13F00CAE869 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		735D5AD31C51C13F00CAE869 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		735D5AD51C51C13F00CAE869 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7360207F1C6FFFCD00395F67 /* UserExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserExtensions.swift; sourceTree = "<group>"; };
+		736020811C70413400395F67 /* RestaurantDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewController.swift; sourceTree = "<group>"; };
 		73A039871C5D6C0D00373A25 /* OverlaySegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlaySegue.swift; sourceTree = "<group>"; };
 		73A0398A1C5D6E3B00373A25 /* RestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantViewController.swift; sourceTree = "<group>"; };
 		73A0398C1C5D726C00373A25 /* RestaurantDishesPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDishesPageViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +94,7 @@
 			children = (
 				73495CA91C5970E100D2284C /* Restaurant.swift */,
 				73495CAB1C59719800D2284C /* Dish.swift */,
+				7360207F1C6FFFCD00395F67 /* UserExtensions.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -155,6 +160,7 @@
 				73A039871C5D6C0D00373A25 /* OverlaySegue.swift */,
 				73A0398A1C5D6E3B00373A25 /* RestaurantViewController.swift */,
 				73A0398C1C5D726C00373A25 /* RestaurantDishesPageViewController.swift */,
+				736020811C70413400395F67 /* RestaurantDetailViewController.swift */,
 				730EFCA21C6E660800ECC953 /* RestaurantDetailViewController.xib */,
 			);
 			name = "Restaurant Detail";
@@ -289,6 +295,7 @@
 				73A0398D1C5D726C00373A25 /* RestaurantDishesPageViewController.swift in Sources */,
 				73495CAE1C59746E00D2284C /* RestaurantCardView.swift in Sources */,
 				73A0398B1C5D6E3B00373A25 /* RestaurantViewController.swift in Sources */,
+				736020801C6FFFCD00395F67 /* UserExtensions.swift in Sources */,
 				73A039881C5D6C0D00373A25 /* OverlaySegue.swift in Sources */,
 				735D5ACC1C51C13F00CAE869 /* RestaurantFeedViewController.swift in Sources */,
 				73495CAC1C59719800D2284C /* Dish.swift in Sources */,
@@ -296,6 +303,7 @@
 				EF6EBB431C596E66003FE493 /* ShortListCell.swift in Sources */,
 				731C1DD31C5988EF00ECC18D /* PermissionsViewController.swift in Sources */,
 				EFFEAA9E1C52BEB000BADA1F /* ShortListViewController.swift in Sources */,
+				736020821C70413400395F67 /* RestaurantDetailViewController.swift in Sources */,
 				73495CAA1C5970E100D2284C /* Restaurant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

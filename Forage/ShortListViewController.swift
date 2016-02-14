@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import DZNEmptyDataSet
+import Parse
 
 class ShortListViewController: UICollectionViewController {
     // MARK: Constants
@@ -20,7 +21,8 @@ class ShortListViewController: UICollectionViewController {
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        Dish.shortList { (dishes: [Dish]) in
+
+        PFUser.currentUser()?.shortList { (dishes: [Dish]) in
             self.dishes = dishes
             self.collectionView?.reloadData()
         }

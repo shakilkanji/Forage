@@ -18,10 +18,6 @@ class Dish: PFObject, PFSubclassing {
         return "Dish"
     }
     
-    class func all(callback: ([Dish]) -> Void) {
-        self.query(self.query(), callback: callback)
-    }
-    
     class func near(location: CLLocation, radius: CLLocationDistance, excludeListed: Bool = false, callback: ([Dish]) -> Void) {
         guard radius > Double(FLT_EPSILON) else {
             callback([])
@@ -31,8 +27,7 @@ class Dish: PFObject, PFSubclassing {
         let params: [NSObject: AnyObject] = [
             "lat": location.coordinate.latitude,
             "lon": location.coordinate.longitude,
-            "dist": radius / 1000.0,
-            "excluded": Dish.shortListIds + Dish.discardListIds
+            "dist": radius / 1000.0
         ]
         
         PFCloud.callFunctionInBackground("dishesNearLocation", withParameters: params) { (result: AnyObject?, error: NSError?) in
@@ -68,49 +63,6 @@ class Dish: PFObject, PFSubclassing {
             guard let results = objects as? [Dish] else { return }
             dishes = results
         }
-    }
-}
-
-extension Dish { // Local Storage
-    // MARK: Class Properties
-    private static var shortListIds: [String] {
-        get {
-            return NSUserDefaults.standardUserDefaults().objectForKey("ShortList") as? [String] ?? []
-        }
-        
-        set {
-            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: "ShortList")
-            NSUserDefaults.standardUserDefaults().synchronize()
-        }
-    }
-    
-    private static var discardListIds: [String] {
-        get {
-            return NSUserDefaults.standardUserDefaults().objectForKey("DiscardList") as? [String] ?? []
-        }
-        
-        set {
-            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: "DiscardList")
-            NSUserDefaults.standardUserDefaults().synchronize()
-        }
-    }
-    
-    // MARK: Mutators
-    func saveToShortList() {
-        guard let objectId = self.objectId else { return }
-        Dish.shortListIds.append(objectId)
-    }
-    
-    func saveToDiscardList() {
-        guard let objectId = self.objectId else { return }
-        Dish.discardListIds.append(objectId)
-    }
-    
-    // MARK: Class Accessors
-    class func shortList(callback: ([Dish]) -> Void) {
-        let query = self.query()
-        query?.whereKey("objectId", containedIn: Dish.shortListIds)
-        self.query(query, callback: callback)
     }
 }
 

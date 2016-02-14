@@ -6,20 +6,32 @@ var Dish = require('cloud/models/Dish');
 
 // Feed Loading
 Parse.Cloud.define("dishesNearLocation", function (request, response) {
-	var restaurantQuery = new Parse.Query("Restaurant")
-		.withinKilometers("location", new Parse.GeoPoint({
-			latitude: request.params.lat,
-			longitude: request.params.lon
-		}), request.params.dist);
-
-	var dishQuery = new Parse.Query("Dish")
-		.include("restaurant")
-		.matchesQuery("restaurant", restaurantQuery)
-		.notContainedIn("objectId", (request.params.excluded || []))
-		.descending("instagramLikeCount");
+	var exclusionPromises = [
+		Parse.User.current().get('likedDishes').query().find(),
+		Parse.User.current().get('dislikedDishes').query().find()
+	]
 	
-	dishQuery.find().then(function (dishes) {
-		response.success(dishes);
+	Parse.Promise.when(exclusionPromises).then(function (likedDishes, dislikedDishes) {
+		var exclusions = likedDishes.concat(dislikedDishes).map(function (dish) {
+			return dish.id;
+		});
+		
+		var restaurantQuery = new Parse.Query("Restaurant")
+			.withinKilometers("location", new Parse.GeoPoint({
+				latitude: request.params.lat,
+				longitude: request.params.lon
+			}), request.params.dist);
+		
+		
+		var dishQuery = new Parse.Query("Dish")
+			.include("restaurant")
+			.matchesQuery("restaurant", restaurantQuery)
+			.notContainedIn("objectId", exclusions)
+			.descending("instagramLikeCount");
+		
+		dishQuery.find().then(function (dishes) {
+			response.success(dishes);
+		});
 	});
 });
 

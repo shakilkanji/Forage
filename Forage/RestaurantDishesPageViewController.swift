@@ -79,12 +79,11 @@ extension RestaurantDishesPageViewController: UIPageViewControllerDataSource {
     func pageViewController(pageViewController: UIPageViewController, viewControllerAtIndex index: Int) -> UIViewController {
         let dish = self.dishes[index]
         
-        let vc = UIViewController(nibName: "RestaurantDetailViewController", bundle: nil)
-        vc.view.tag = index
+        let vc = RestaurantDetailViewController(nibName: "RestaurantDetailViewController", bundle: nil)
         
-        if let imageView = vc.view.viewWithTag(1) as? UIImageView {
-            imageView.setImageWithURL(NSURL(string: dish.photo)!, placeholderImage: nil)
-        }
+        vc.view.tag = index
+        vc.imageView.setImageWithURL(NSURL(string: dish.photo)!, placeholderImage: nil)
+        print(dish.photo)
         
         return vc
     }

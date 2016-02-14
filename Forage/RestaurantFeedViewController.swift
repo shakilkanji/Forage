@@ -10,6 +10,7 @@ import UIKit
 import ZLSwipeableViewSwift
 import AFNetworking
 import CoreLocation
+import Parse
 
 @IBDesignable
 class RestaurantFeedViewController: UIViewController {
@@ -217,12 +218,17 @@ extension RestaurantFeedViewController { // SwipeableView Delegate
         
         switch direction {
         case Direction.Right:
-            dish.saveToShortList()
+            PFUser.currentUser()?.likedDishes.addObject(dish)
         case Direction.Left:
-            dish.saveToDiscardList()
+            PFUser.currentUser()?.dislikedDishes.addObject(dish)
             
         default:
             break
+        }
+        
+        PFUser.currentUser()?.saveInBackground()
+        PFUser.currentUser()?.matchedRestaurants { (restaurants: [Restaurant]) in
+            print("MATCHES \(restaurants.map { [$0.name, $0.objectId] })")
         }
         
         self.swipedCardIndex += 1

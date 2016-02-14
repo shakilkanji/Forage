@@ -33,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Parse.setApplicationId("S31oUfqQYNeyD1XMR3tWnEAZEHWHRd4AuEgmYduT",
             clientKey: "JXHbhgJuSoDxRhrXwi4BCiQUqMdHrpX6vOYKI6sa")
+        PFUser.enableAutomaticUser()
+        
         Dish.registerSubclass()
         Restaurant.registerSubclass()
         
