@@ -113,6 +113,8 @@ extension RestaurantDishesPageViewController: UIPageViewControllerDelegate {
     }
     
     func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        self.currentPageIndex = self.transitioningPageIndex
+        if completed {
+            self.currentPageIndex = self.transitioningPageIndex
+        }
     }
 }

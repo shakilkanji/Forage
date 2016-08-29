@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("S31oUfqQYNeyD1XMR3tWnEAZEHWHRd4AuEgmYduT",
             clientKey: "JXHbhgJuSoDxRhrXwi4BCiQUqMdHrpX6vOYKI6sa")
         PFUser.enableAutomaticUser()
+        PFUser.currentUser()?.saveEventually()
         
         Dish.registerSubclass()
         Restaurant.registerSubclass()
